@@ -1,0 +1,498 @@
+/*  Hide radio button (the round disc)  we will use just the label to create pushbutton effect*/
+input[type=radio] {    display:none;     margin:10px;} 
+/*  Change the look'n'feel of labels (which are adjacent to radiobuttons).  Add some margin, padding to label*/
+input[type=radio] + label {    display:inline-block;    margin:-2px;    padding: 4px 12px;    background-color: #e7e7e7;    border-color: #ddd;}
+/* Change background color for label next to checked radio button to make it look like highlighted button*/
+input[type=radio]:checked + label {    background-image: none;    background-color:#d0d0d0;}
+body {
+	font-family:  "Arial","Helvetica",  "Verdana", "sans-serif";			
+	color:#02213d;			
+	font-size: 75%;
+}	 
+.tableDates tr td{
+	border-left: 1px solid #E9EFC9;
+	border-right: 1px solid #E9EFC9;
+}
+.tableDates tr td.tdDates_span{
+	padding-top: 10px;
+}
+.tableDates tr td.tdDates_varname{
+	padding-bottom: 10px;
+}
+.red{
+	color: red;
+	font-weight: bold;
+}
+.green{
+	color: green;
+	font-weight: bold;
+}
+.black{
+	color: black;
+}
+.tableInfo_dates tr td{
+	font-size: 80%;
+	margin: 5px;
+	padding-top: 20px;
+}
+.tableInfo_dates_title{
+	background-color: #DCDCDC;
+	border-bottom: 1px solid #A9A9A9;
+	font-weight: bold;
+	color: #02213d;
+}
+.tableInfo_dates_trY1,.tableInfo_dates tr.tableInfo_dates_trY1{
+	border: 0px solid #FFF;
+	border-left: 1px solid #E9EFC9   ;	
+	border-bottom: 2px solid #A5BF26   ;	
+	padding-left: 5px;
+	background-color: #E9EFC9   ;
+	color: #02213d   ;
+}
+#spanGQueryBy,#spanGQueryBy_params{
+	font-weight: bold;
+	color:#02213d;		
+}
+#tableConfigureGRaph tr.tableInfo_dates_trQueryBy{
+	border: 1px solid #FFF;
+	border-left: 1px solid #FFF  ;		
+	border-bottom: 1px solid #DCDCDC   ;			
+	color: #02213d   ;
+	font-style: italic;
+}
+.tableInfo_dates_trY2,.tableInfo_dates tr.tableInfo_dates_trY2{	
+	border: 0px solid #FFF;
+	border-bottom: 2px solid #A5BF26   ;		
+	background-color: #DBE4A7   ;
+	border-right: 1px solid #DBE4A7   ;	
+	color: #02213d   ;
+}
+.tableInfo_dates  td.tableInfo_dates_tdVariable,.tableInfo_dates td.tableInfo_dates_tdVariable{
+	padding-left: 5px;
+}
+.tableInfo_dates_common{
+	background-color: #FFF   ;
+	border-bottom: 2px solid #DCDCDC;	
+	color: #02213d   ;
+}
+.tooltipClass{
+	font-size: 90%;
+	color:#02213d;				
+	padding: 3px;
+}
+.div_layer{
+	float:left;
+	width: 265px;
+	border: 1px solid #000;
+}
+.div_layer_check{
+	width: 14px;
+	float:left;
+}
+.div_layer_other{
+	margin-top: 0px;
+	margin-left: 200px;
+}
+select#cboOwnerID,select#cboLayerID,select#cboScenarioID{
+    width: 18em;
+}
+select#year_select,select#date_select{
+    width: 6em;
+}
+select#selVarY1,select#selVarY2,select#selVarY1_list[multiple],select#selVarY2_list[multiple] {
+    width: 34em;
+}
+.validateTips_graph{
+	padding: 6px;
+}
+.custom-combobox {
+	position: relative;
+	display: inline-block;
+}
+.custom-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* support: IE7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+#divSelect1{
+	float: left;
+	width: 230px;	
+}
+.divSelect1_lineHThin{
+	line-height: 0.8em;	
+}
+.divSelect1_lineHNormal{
+	line-height: 1.0em;	
+}
+#divSelect2{
+	padding-top: 53px;
+	margin-left: 230px;
+}
+#txtFSelectedValue{
+	font-size: 80%;
+	height: 10px;
+	width: 200px;
+	border:none;
+    background:transparent;
+
+}
+#txtLat,#txtLon,#txtULat,#txtLLon,#txtLLat,#txtRLon,#txtFLat,#txtFLon{
+	font-size: 80%;
+	height: 10px;
+	width: 40px;
+	border:none;
+    background:transparent;
+}
+#heading .logo{background:url('http://adapt-test.eea.europa.eu/image/company_logo?img_id=13229&amp;t=1393332123108') no-repeat;display:block;font-size:0;height:88px;text-indent:-9999em;width:600px;}
+#p_p_id_simplefilterportlet_WAR_SimpleFilterportlet_INSTANCE_Xu4F_ .portlet{margin-top:-310px;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;}#p_p_id_simplefilterportlet_WAR_SimpleFilterportlet_INSTANCE_03Bg_ .portlet{margin-top:-310px;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;}
+
+.ui-sortable{
+	margin-left: 0px;
+	margin-top: 0px;
+    margin-bottom: 0px;
+	margin-right: 5px;
+}
+img{
+	border: 0px;
+}
+div#graph{
+	float:left;
+	margin-top: 0px;
+	min-width:300px;
+	width:875px;
+	/*height: 480px;*/
+	height: 741px;
+	border: 1px solid #DCDCDC   ;
+}
+div#graphOther{
+	margin-left: 835px;
+	width: 50px;
+}
+div#graphOther label{
+font-size: 90%;
+}
+.tableInputRadio{
+	position: absolute;
+	margin-top: -12px;	
+}
+div#graphResult{
+	width: 820px;	
+	float:left;
+}
+#tableTools{
+	margin-top: 20px;
+}	
+.div_menu_label{
+	width: 250px;		
+}
+.div_menu_label2{
+	width: 100px;
+}		
+.div_menu_labelSpatialSelection{
+	width:220px;		
+}
+.div_menu_labelTools{
+	width: 70px;		
+}
+.div_menu_labelQueryBy{
+	width: 344px;		
+}		
+.div_menu_label,.div_menu_label2,.div_menu_labelSpatialSelection,.div_menu_labelTools,.div_menu_labelQueryBy{
+	float: left;						
+	padding: 1px;
+	background: #a6bf26; /* Old browsers */
+	background: -moz-linear-gradient(left,  #a6bf26 0%, #e9efc9 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#a6bf26), color-stop(100%,#e9efc9)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #a6bf26 0%,#e9efc9 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #a6bf26 0%,#e9efc9 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #a6bf26 0%,#e9efc9 100%); /* IE10+ */
+	background: linear-gradient(to right,  #a6bf26 0%,#e9efc9 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6bf26', endColorstr='#e9efc9',GradientType=1 ); /* IE6-9 */
+	color: #ffffff;
+}
+.div_menu_help,.div_menu_help img{					
+	padding-top: 0px;
+	background: #E9EFC9;		
+	border-top: 1px solid transparent;
+}
+#divDatasetLists{
+	border: 0px solid #000;
+	float:left;
+	padding-left: 5px;
+}
+#ulDatasetLists { list-style-type: none; margin: 0; padding: 0;  }
+#ulDatasetLists li {margin-top: 5px;}
+  /*
+  #ulDatasetLists li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }*/
+  /*#ulDatasetLists li span { position: absolute; margin-left: -1.3em; 			}*/
+.ui-state-highlight2  {
+	border: 1px solid #FFC6C6   ; 
+	background: #FFECEC   /*{bgColorHighlight}*/  50%/*{bgHighlightXPos}*/ 50%/*{bgHighlightYPos}*/ repeat-x/*{bgHighlightRepeat}*/; color: #363636/*{fcHighlight}*/; 
+}
+.ui-state-error,.ui-dialog .ui-state-error { padding: .3em; }
+div._divDataset_sel,div._divDataset{			
+	/*float:left;*/
+	width: 250px;			
+	font-size: 80%;			
+	max-height:100px;
+	overflow:auto;
+	border: 1px solid #D3D3D3;
+	-moz-box-shadow:5px 5px 2px #D3D3D3;
+	-webkit-box-shadow:5px 5px 2px #D3D3D3;
+	box-shadow:5px 5px 2px #D3D3D3;
+}
+div._divDataset_sel{
+	/*background-color:#FFFFE0;*/
+		border: 1px solid #E9EFC9;
+	-moz-box-shadow:5px 5px 2px #E9EFC9;
+	-webkit-box-shadow:5px 5px 2px #E9EFC9;
+	box-shadow:5px 5px 2px #E9EFC9;			
+}
+ul#controlToggle ol { display: inline; }
+#divQuery {
+	margin-left:710px;
+	width: 700px;	
+}		
+#draggable_indicator  {
+	height: 10px;
+	width: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: transparent;
+	z-index: 9999;
+}
+#draggable_fullMap  {
+	height: 10px;
+	width: 10px;
+	position: absolute;
+	background-color: transparent;
+	z-index: 1;
+}
+.DivShow{
+	display: block;  
+	visibility: visible;
+}
+.DivHidden{
+	display: none;
+	visibility:hidden;
+}	
+#container{
+	padding:0;
+	height:7em;
+}
+ul{
+	list-style-type:none;
+/*	margin-left: -40px; 	*/
+	border: 0px solid #000;
+}
+#aHrefVariables_metadata:link{	
+	color: #012971;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	margin-bottom: 8px;
+	margin-top: -15px;	
+}
+#aHrefVariables_metadata:hover{
+	font-weight: bold;
+	color: #012971;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	margin-top: -15px;
+	margin-bottom: 8px;
+}
+#aHrefVariables:link{
+	background-color: #D7E3EF;
+	color: #012971;
+	text-decoration: none;
+	display: block;
+	padding:10px;
+	width: 100%;
+	margin-right:0px;	
+}
+#aHrefVariables:hover{
+	background-color: #E9EFC9;
+	color: #012971;
+	text-decoration: none;
+	display: block;
+	padding:10px;
+	width: 100%;
+	margin-right:0px;	
+}
+#spanListMetadata{
+	padding: 20px;
+}
+td#td_top
+{
+	vertical-align:top;
+}
+.ui-autocomplete {z-index:1000}
+
+#divVariablesList{font-size: 0.8em;margin-left: -10px;}
+#draggable_variable { width: 265px; height: 130px; background-color: transparent; border: 0px solid #A5BF26;  text-align: left; display:block; padding: 5px;}	
+#draggable_tools { width: 240px; height: 50px;  border: 0px solid #000; text-align: left; display:block}	
+#draggable_querybyshape { width: 375px; height: 80px; background-color: transparent; border: 0px solid white; text-align: left; display:none; font-size: 90%; color: #02213d;}	
+#draggable_querybypoint {margin: 0px;padding: 0px; width: 375px; height: 80px; background-color: transparent; border: 0px solid white; text-align: left; display:none; font-size: 90%; color: #02213d;}	
+#draggable_querybybox { width: 355px; height: 80px; background-color: transparent; border: 0px solid white; text-align: left; display:none; font-size: 90%; color: #02213d;}	
+#draggable_graph { width: 90px; height: 50px; background-color: transparent; border: 0px solid #000; text-align: left; display:block}	
+#draggable_queryBy { width: 363px; height: 50px; background-color: transparent; border: 0px solid #000; text-align: left; display:block}	
+#draggable_logo { width: 400px; height: 2000px; background-color: transparent; border: 0px solid #000; text-align: left; display:block}	
+#draggable_layers { width: 265px; height: 100px; background-color: transparent; border: 0px solid white; text-align: left; display:block}	
+#draggable_graphdate { width: 400px; height: 100px; background-color: white; border: 1px solid yellow; text-align: left; display:block}	
+#draggable_graphVars { width: 600px; height: 200px;  border: 1px solid white; text-align: left; display:block}	
+#dialog_configureGraphParams{font-size:90%;		}
+#draggable_validateTips{border: 0px solid #000; width: 600px;background-color: transparent;}	 
+#draggable_indicator2{
+	font-size: 90%; color: #02213d; padding-left: 5px;border: 1px solid white; width: 100px; height: 40px;
+}
+.ui-autocomplete-category {
+	font-weight: bold;
+	padding: .2em .4em;
+	margin: .8em 0 .2em;
+	line-height: 1.5;
+}
+#tableConfigureGRaph{width:100%; margin-top: 5px;margin-bottom: 5px;font-size:85%;color: #02213d   ;border-top:1px solid #DCDCDC   ;	}
+#tableConfigureGRaph tr{
+	border:0px solid #FFF;
+}
+#tableConfigureGRaph td {
+	padding:5px;	
+}
+#tableConfigureGRaph td#td_axes_param{
+	background:#FFF;
+	border:0px solid #FFF;
+	border-bottom: 2px solid #A5BF26   ;		
+}
+#tableConfigureGRaph td#td_white{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	padding-right: 10px;
+	background: #FFF;
+}
+.ui-dialog .ui-dialog-title {
+	color: #FFFFFF;
+}
+.ui-dialog .ui-dialog-titlebar {
+	background: #677A8B;	/* grigio carta di zucchero */
+}
+span{
+	color: #02213d;
+	font-size: 85%;
+}
+input,select{
+	color: #02213d;
+	font-size: 90%;
+}
+#status{
+	font-size: 90%;
+	font-weight: bold;
+	color: #02213d;
+}	 
+img#imgQueryPoint:hover,img#imgQueryBox:hover,img#imgQueryShape:hover,img#imgQueryMove:hover{		 
+	cursor: pointer; 
+	cursor: hand;
+}
+#divSelect1 label{
+	font-size: 90%;
+}
+#titleHelpSection{
+	float: right;
+	margin-right: 10px;
+}
+._indicatorOver{
+	width: 220px;
+	color:#3772AB;			
+	font-weight: bold;
+	position: absolute;
+	top: 50%;
+	left: 350px;
+}
+._buttonMaximize{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 9999;
+	background: #aaaaaa/*{bgColorOverlay}*/ url(images/ui-bg_flat_0_aaaaaa_40x100.png)/*{bgImgUrlOverlay}*/ 50%/*{bgOverlayXPos}*/ 50%/*{bgOverlayYPos}*/ repeat-x/*{bgOverlayRepeat}*/;	
+}
+.ui-slider {
+	position: relative;
+	text-align: left;	
+}
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 1.2em;
+	height: 1.2em;
+	cursor: default;
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.ui-slider-range{
+	border: 1px solid #d3d3d3;
+	background: #e6e6e6 url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #555555;
+}
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: .7em;
+	display: block;
+	border: 0;
+	background-position: 0 0;
+}
+
+/* support: IE8 - See #6727 */
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+	filter: inherit;
+}
+.ui-slider-horizontal {
+	height: .8em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+	left: -.3em;
+	margin-left: 0;
+	margin-bottom: -.6em;
+	border: 1px solid #d3d3d3;
+	background: #e6e6e6 url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #555555;
+}
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+	left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+	right: 0;
+}
+select[disabled="disabled"] {
+    color: #C0C0C0;
+    background-color: #F7F7F7  ;
+}
+.classButton{
+	-moz-border-radius-topleft: 4px/*{cornerRadius}*/; -webkit-border-top-left-radius: 4px/*{cornerRadius}*/; -khtml-border-top-left-radius: 4px/*{cornerRadius}*/; border-top-left-radius: 4px/*{cornerRadius}*/; 
+	-moz-border-radius-topright: 4px/*{cornerRadius}*/; -webkit-border-top-right-radius: 4px/*{cornerRadius}*/; -khtml-border-top-right-radius: 4px/*{cornerRadius}*/; border-top-right-radius: 4px/*{cornerRadius}*/;
+	-moz-border-radius-bottomleft: 4px/*{cornerRadius}*/; -webkit-border-bottom-left-radius: 4px/*{cornerRadius}*/; -khtml-border-bottom-left-radius: 4px/*{cornerRadius}*/; border-bottom-left-radius: 4px/*{cornerRadius}*/;
+	-moz-border-radius-bottomright: 4px/*{cornerRadius}*/; -webkit-border-bottom-right-radius: 4px/*{cornerRadius}*/; -khtml-border-bottom-right-radius: 4px/*{cornerRadius}*/; border-bottom-right-radius: 4px/*{cornerRadius}*/;
+	border: 1px solid #d3d3d3/*{borderColorDefault}*/; 
+	background: #e6e6e6; 
+	color: #555555/*{fcDefault}*/;
+	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+	display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible; 
+	padding: .3em ;
+	font-size: 90%;
+}
+.divSlider .ui-widget-header{background-image:none;background-color:#000   ;}
+.divSlider .ui-slider-handle { border-color: #000; }

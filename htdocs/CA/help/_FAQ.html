@@ -1,0 +1,132 @@
+<h2>FAQ</h2>
+<ul>
+<li><a href="#faq1">What internet browsers are supported?</a></li>
+<li><a href="#faq2">What is the difference between a raster dataset and a shapefile?</a></li>
+<li><a href="#faq3">What is the "Spherical Mercator" map projection?</a></li>
+<li><a href="#faq4">What are the required Internet Explorer settings?</a></li>
+<li><a href="#faq5">What are the required settings for other internet browsers?</a></li>
+</ul>
+
+
+<a name="faq1"></a>
+<h2>What internet browsers are supported?</h2>
+<ul>
+	<li>
+	Internet Explorer 9, 10, 11
+	</li>
+	<li>
+	
+	Firefox
+	</li>
+	<li>
+	Google Chrome
+	</li>
+	<li>
+	Opera
+	</li>
+	<li>
+	Safari
+	</li>
+</ul>	
+
+</table>
+
+
+<br>
+<a name="faq2"></a><a href="#top">Top</a>
+<h2>What is the difference between a raster dataset and a shapefile?</h2>
+
+<p>
+A raster dataset consists of a matrix of cells ("pixels") organized into rows and columns (i.e. a grid) where each cell contains a value representing information (e.g. temperature). Common raster datasets are digital aerial photographs, imagery from satellites, digital pictures, or even scanned maps.
+<br>
+<br>
+Example of raster dataset:
+<br>
+<img src='./images/raster.png'>
+</p>
+<p>
+Shapefiles are datasets with a simple, format for storing the geometric location and attribute information of geographic features. Geographic features in a shapefile can be represented by points, lines, or polygons (areas). The workspace may also contain dBASE tables, which can store additional attributes that can be joined to a shapefile's features.
+<br>
+<br>
+Example of shapefile:
+<br>
+
+ 
+<br>
+<img src='./images/shapefile.png'>
+</p>
+
+
+
+<a name="faq3"></a><a href="#top">Top</a>
+<h2>What is it the "Spherical Mercator" map projection?</h2>
+
+<p>
+The providers of datasets available in Climate ADAPT use a Spherical Mercator map projection, which is a Mercator projection that treats the Earth as a sphere rather than as an ellipsoid.
+
+
+<br>
+This affects calculations performed when treating the map as a flat plane, and it is therefore important to be aware of this when working with these map providers.
+
+</p>
+<p>
+In order to properly overlay data on top of the maps provided by the commercial API providers, it is necessary to use this projection. This applies primarily to displaying raster tiles over the commercial API layers (e.g. TMS / Tile Map Service, WMS / Web Map Service, or other similar standards for web mapping).
+</p>
+<p>
+In order to work well with the existing commercial APIs, many users who create data designed for use within Google Maps will also use the "Spherical Mercator" map projection. One prime example is OpenStreetMap, whose raster map tiles are all projected into this projection.
+</p>
+<p>
+Map projections in GIS are commonly referred to by their "EPSG" (European Petroleum Survey Group) identifier codes. One common identifier is "EPSG:4326", which describes maps where latitude and longitude are treated as X- and Y-values. Spherical Mercator has an official designation of "EPSG:3857". However, before this was established, a large amount of software used the identifier "EPSG:900913". This is an unofficial code, but is still the commonly used code in OpenLayers. Any time you see the string "EPSG:4326", you can assume it describes latitude and longitude geographic coordinates. Any time you see the string "EPSG:900913", it will be describing coordinates in X- and Y-coordinates in metres.
+</p>
+
+<p>
+<a name="faq4"></a><a href="#top">Top</a>
+<h2>What are the required Internet Explorer settings?</h2>
+
+<p>
+In order to display the interactive graphs with the browser Internet Explorer, please configure "Internet Options" as follows:
+<br>
+1. Select Tools >> Internet Options.
+<br>
+2. Click the Settings button in Browsing History.
+<br>
+3. Select the "Every time I visit the webpage" radio button.
+<br>
+4. Click OK to close the Settings dialog.
+<br>
+5. Click OK to close the Internet Options dialog.
+<br>
+<img src='./images/IE_options.png' alt='IE settings' >
+
+<br>
+<br>
+To view and delete your browsing history:
+<br>
+<br>
+1. Select Tools >> Internet Options.
+<br>
+2. Click the "Delete" button in Browsing History.
+<br>
+3. Select "Temporary Internet files and website files" and "Cookies and website data"
+<br>
+4. Clic Delete to delete and close the Settings dialog.
+<br>
+5. Click OK to close the Internet Options dialog.
+<br>
+<img src='./images/IE_history.png' alt='IE browsing history' >
+
+<br>
+<br>
+More info about browsing history <a href='http://windows.microsoft.com/en-us/internet-explorer/manage-delete-browsing-history-internet-explorer?ocid=ie_delete_history#ie=ie-11-win-7' target=_blank>here</a>.
+</p>
+<p>
+<a name="faq4"></a><a href="#top">Top</a>
+<h2>What are the required settings for other internet browsers?</h2>
+<p>
+No specific setting for other browsers.
+<br>
+Remember to turn-off popup blocker.
+</p>
+
+
+ 

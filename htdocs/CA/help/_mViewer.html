@@ -1,0 +1,317 @@
+<h2>Description of the Map Viewer</h2>
+<ul>
+<li><a href="#mViewer_dataSel">Map Viewer: Data selection</a></li>
+<li><a href="#mViewer_rasterDef">Map Viewer: Raster data</a></li>
+<li><a href="#mViewer_shapeDef">Map Viewer: Shapefiles</a></li>
+<li><a href="#mViewer_tableC">Map Viewer: Table of contents</a></li>
+<li><a href="#mViewer_metadataLink">Map Viewer: Metadata link</a></li>
+<li><a href="#mViewer_mapFunc">Map Viewer: Map functionalities</a></li>
+</ul>
+
+<a name="mViewer_dataSel"></a>
+
+<h2>Map viewer: Data selection</h2>
+<p>
+Select a valid value from the first "<b>Climate Indicator</b>" list: all available datasets will be loaded automatically into the "<b>Dataset</b>" list as shown in the example ("Evapotranspiration") below:
+<br><img src="./images/mViewDataSel_firstCombo.png" width="200"><br>
+<br>
+<img src="./images/mViewDataSel_datasetCombo.png" width="200">
+<br>
+<br>
+Choose a valid dataset to be displayed into the map. For certain datasets a "<b>Scenario</b>" list will automatically loaded, enabling different scenarios for the dataset to be specified: select a valid value to display over the map.
+<br>
+<img src="./images/mViewDataSel_scenario.png" width="200">
+
+<br>
+<br>
+Example of dataset layer:
+<br>
+<img src="./images/mViewDataSel_exLayer.png" >
+<br>
+<br>
+All layers may be separated into "Observations" (i.e. all layers refer to the state of being observed) and "Future Projections" (i.e. all layers refer to the state of being projected).
+<ul>
+	<li><b>Observations</b>, <i>all layers refer to the state of being observed;</i></li>
+	<li><b>Projections</b>, <i>all layers refer to the state of being projected;</i></li>
+</ul>	
+Select the year and period, to change the loaded dataset: This dataset will be added into the "Table of Contents" with a green shade, as shown in the example.
+<br>
+<img src="./images/mViewDataSel_changeDate.png">
+<br>
+<img src="./images/mViewDataSel_justUploaded.png">
+<br>
+<br>
+Click on the icon <img src="./images/mViewDataSel_tableicon.png"> to open a pop-up list of all available datasets:
+<br>
+<img src="./images/mViewDataSel_table.png" width=300>
+<br>
+<br>
+Select a dataset or alternatively, type a value to search for a specific dataset: a list matching the search criteria will be loaded as shown below:
+<br>
+<img src="./images/mViewDataSel_tableEx.png" width=300>
+<br>
+<a name="mViewer_rasterDef"></a><a href="#top">Top</a>
+<h2>Map Viewer: Raster data</h2>
+<p> 
+A raster dataset consists of a matrix of cells (pixels) organized into rows and columns (a grid) where each cell contains a value representing information (e.g. temperature). Common raster datasets are digital aerial photos, imagery from satellites, digital pictures, or even scanned maps.
+<br>
+<br>
+Example of raster dataset:
+<br>
+<img src='./images/raster.png'>
+<br>
+<a name="mViewer_shapeDef"></a><a href="#top">Top</a>
+<h2>Map Viewer: Shapefiles</h2>
+<p> 
+Shapefiles are datasets that use a simple format for storing the geometric location and attribute information of geographic features. Geographic features in a shapefile can be represented by points, lines, or polygons (areas). The workspace may also contain dBASE tables, which can store additional attributes that can be joined to a shapefile's features.
+<br>
+<br>
+Example of shapefile:
+<br>
+
+<br>
+<img src='./images/shapefile.png'>
+<br>
+Spatial selections as "Query by Point" and "Query by Box" are disabled with this kind of datasets:
+<br>
+<img src='./images/shapeDisabled.png'>
+<br>
+<a name="mViewer_tableC"></a><a href="#top">Top</a>
+<h2>Map Viewer: Table of contents</h2>
+<p>
+<br>All loaded datasets will automatically added into the "<b>Table of Contents</b>" section as shown below:: 
+<br>
+<img src="./images/mViewDataSel_exTableCont.png">
+<br>
+For each layer, click on:
+<ul>
+	<li><img src="./images/mViewDataSel_deleteImg.png"> to delete the selected dataset from your list.</li>
+	<li><img src="./images/mViewDataSel_metadataImg.png"> to open a webpage on the dataset's metadata.</li>	
+</ul>
+<br>
+Use the "<b>drag and drop functionality</b>" to change the order of datasets.
+
+<br>
+<img src="./images/mViewDataSel_layerShadow.png">
+</p>
+<a name="mViewer_metadataLink"></a><a name="mViewer_mapFunc"></a><a href="#top">Top</a>
+<h2>Map viewer: Metadata link</h2>
+<p>
+Below is an example of a metadata web-page that is associated with a dataset:
+<br>
+<img src='./images/_mViewer_tableOfContents_metadataEx.png'>
+<br>
+All metadata datasets are INSPIRE compliant. More info about INSPIRE can be found <A href='http://inspire.ec.europa.eu/' target=_blank>here</a>.
+<pre>
+<dl class="docutils">
+<dt>Access constraints</dt>
+<dd>Access constraints applied to assure the protection of privacy or intellectual
+property, and any special restrictions or limitations on obtaining the
+resource</dd>
+<dt>Abstract</dt>
+<dd>Brief narrative summary of the content of the resource(s)</dd>
+<dt>Administrative area</dt>
+<dd>State, province of the location</dd>
+<dt>Temporal extent - Begin date</dt>
+<dd>Formatted as 2007-09-12T15:00:00 (YYYY-MM-DDTHH:mm:ss)</dd>
+<dt>Character set</dt>
+<dd>Full name of the character coding standard used for the metadataset</dd>
+<dt>Grid spatial representation - Cell geometry</dt>
+<dd>Identification of grid data as point or cell</dd>
+<dt>City</dt>
+<dd>City of the location</dd>
+<dt>Reference System Info - Code</dt>
+<dd>Alphanumeric value identifying an instance in the namespace</dd>
+<dt>Country</dt>
+<dd>Country of the physical address</dd>
+<dt>Data quality info</dt>
+<dd>Provides overall assessment of quality of a resource(s)</dd>
+<dt>Date</dt>
+<dd>Reference date and event used to describe it (YYYY-MM-DD)</dd>
+<dt>Date stamp</dt>
+<dd>Date that the metadata was created (YYYY-MM-DDThh:mm:ss)</dd>
+<dt>Date type</dt>
+<dd>Event used for reference date</dd>
+<dt>Delivery point</dt>
+<dd>Address line for the location (as described in ISO 11180, annex A)</dd>
+<dt>Equivalent scale - Denominator</dt>
+<dd>The number below the line in a vulgar fraction</dd>
+<dt>Data Quality - Description</dt>
+<dd>Description of the event, including related parameters or tolerances</dd>
+<dt>OnLine resource - Description</dt>
+<dd>Detailed text description of what the online resource is/does</dd>
+<dt>Descriptive keywords</dt>
+<dd>Provides category keywords, their type, and reference source</dd>
+<dt>Grid spatial representation - Dimension name</dt>
+<dd>Name of the axis i.e. row, column</dd>
+<dt>Grid spatial representation - Dimension size</dt>
+<dd>Number of elements along the axis</dd>
+<dt>Dimension size Resolution</dt>
+<dd>Number of elements along the axis</dd>
+<dt>Distribution info</dt>
+<dd>Provides information about the distributor of and options for obtaining the
+resource(s)</dd>
+<dt>Geographic bounding box - East bound longitude</dt>
+<dd>Eastern-most coordinate of the limit of the dataset extent, expressed in
+longitude in decimal degrees (positive east)</dd>
+<dt>Edition</dt>
+<dd>Version of the cited resource</dd>
+<dt>Electronic mail address</dt>
+<dd>Address of the electronic mailbox of the responsible organisation or individual</dd>
+<dt>Temporal extent - End date</dt>
+<dd>Formatted as 2007-09-12T15:00:00 (YYYY-MM-DDTHH:mm:ss)</dd>
+<dt>Equivalent scale</dt>
+<dd>Level of detail expressed as the scale of a comparable hardcopy map or
+chart</dd>
+<dt>Extent</dt>
+<dd>Information about spatial, vertical, and temporal extent</dd>
+<dt>Facsimile</dt>
+<dd>Telephone number of a facsimile machine for the responsible organisation or
+individual</dd>
+<dt>File identifier</dt>
+<dd>Unique identifier for this metadata file</dd>
+<dt>Vector spatial representation - Geometric object type</dt>
+<dd>Name of point and vector spatial objects used to locate zero-, one-and
+two-dimensional spatial locations in the dataset</dd>
+<dt>Vector spatial representation - Geometric object count</dt>
+<dd>Total number of the point or vector object type occurring in the dataset</dd>
+<dt>Geographic bounding box</dt>
+<dd>Geographic position of the dataset</dd>
+<dt>Grid spatial representation</dt>
+<dd>Information about grid spatial objects in the dataset</dd>
+<dt>Grid spatial representation - Resolution value</dt>
+<dd>Degree of detail in the grid dataset</dd>
+<dt>Grid spatial representation - Transformation parameter availability</dt>
+<dd>Indication of whether or not parameters for transformation exists</dd>
+<dt>Data Quality - Hierarchy level</dt>
+<dd>Hierarchical level of the data specified by the scope</dd>
+<dt>Identification info</dt>
+<dd>Basic information about the resource(s) to which the metadata applies</dd>
+<dt>Point of Contact - Individual name</dt>
+<dd>Name of the responsible person- surname, given name, title separated by a
+delimiter</dd>
+<dt>Keyword</dt>
+<dd>Commonly used word(s) or formalised word(s) or phrase(s) used to describe the
+subject</dd>
+<dt>Data Language</dt>
+<dd>Language used for documenting data</dd>
+<dt>Metadata - Language</dt>
+<dd>Language used for documenting metadata</dd>
+<dt>Data Quality - Lineage</dt>
+<dd>Non-quantitative quality information about the lineage of the data specified by
+the scope. Mandatory if report not provided</dd>
+<dt>OnLine resource - Linkage</dt>
+<dd>Location (address) for on-line access using a Uniform Resource Locator address or
+similar addressing scheme such as <a class="reference external" href="http://www.statkart.no/isotc211">http://www.statkart.no/isotc211</a></dd>
+<dt>Maintenance and update frequency</dt>
+<dd>Frequency with which changes and additions are made to the resource after the
+initial resource is completed</dd>
+<dt>Metadata author</dt>
+<dd>Party responsible for the metadata information</dd>
+<dt>Metadata standard name</dt>
+<dd>Name of the metadata standard (including profile name) used</dd>
+<dt>Metadata standard version</dt>
+<dd>Version (profile) of the metadata standard used</dd>
+<dt>OnLine resource - Name</dt>
+<dd>Name of the online resource</dd>
+<dt>Geographic bounding box - North bound latitude</dt>
+<dd>Northern-most, coordinate of the limit of the dataset extent expressed in latitude
+in decimal degrees (positive north)</dd>
+<dt>Grid spatial representation - Number of dimensions</dt>
+<dd>Number of independent spatial-temporal axes</dd>
+<dt>Distribution Info - OnLine resource</dt>
+<dd>Information about online sources from which the resource can be obtained</dd>
+<dt>Point of Contact - Organisation name</dt>
+<dd>Name of the responsible organisation</dd>
+<dt>Other constraints</dt>
+<dd>Other restrictions and legal prerequisites for accessing and using the
+resource</dd>
+<dt>Point of contact</dt>
+<dd>Identification of, and means of communication with, person(s) and organisations(s)
+associated with the resource(s)</dd>
+<dt>Point of contact - Position name</dt>
+<dd>Role or position of the responsible person</dd>
+<dt>Postal code</dt>
+<dd>ZIP or other postal code</dd>
+<dt>Presentation form</dt>
+<dd>Mode in which the resource is represented</dd>
+<dt>OnLine resource - Protocol</dt>
+<dd>Connection protocol to be used</dd>
+<dt>Purpose</dt>
+<dd>Summary of the intentions with which the resource(s) was developed</dd>
+<dt>Reference system info</dt>
+<dd>Description of the spatial and temporal reference systems used in the
+datasetData</dd>
+<dt>Data Quality - Report</dt>
+<dd>Quantitative quality information for the data specified by the scope. Mandatory if
+lineage not provided</dd>
+<dt>Grid spatial representation - Resolution value</dt>
+<dd>Degree of detail in the grid dataset</dd>
+<dt>Point of contact - Role</dt>
+<dd>Function performed by the responsible party</dd>
+<dt>Geographic bounding box - South bound latitude</dt>
+<dd>Southern-most coordinate of the limit of the dataset extent, expressed in latitude
+in decimal degrees (positive north)</dd>
+<dt>Spatial representation info</dt>
+<dd>Digital representation of spatial information in the dataset</dd>
+<dt>Spatial representation type</dt>
+<dd>Method used to spatially represent geographic information</dd>
+<dt>Data Quality - Statement</dt>
+<dd>General explanation of the data producer&#8217;s knowledge about the lineage of a
+dataset</dd>
+<dt>Status</dt>
+<dd>Status of the resource(s)</dd>
+<dt>Supplemental Information</dt>
+<dd>Any other descriptive information about the dataset</dd>
+<dt>Temporal Extent</dt>
+<dd>Time period covered by the content of the dataset</dd>
+<dt>Title</dt>
+<dd>Name by which the cited resource is known</dd>
+<dt>Topic category code</dt>
+<dd>High-level geographic data thematic classification to assist in the grouping and
+search of available geographic datasets. Can be used to group keywords as well.
+Listed examples are not exhaustive. NOTE It is understood there are overlaps between
+general categories and the user is encouraged to select the one most
+appropriate.</dd>
+<dt>Grid spatial representation - Transformation parameter availability</dt>
+<dd>Indication of whether or not parameters for transformation exists</dd>
+<dt>Vector spatial representation - Topology level</dt>
+<dd>Code which identifies the degree of complexity of the spatial relationships</dd>
+<dt>Type</dt>
+<dd>Subject matter used to group similar keywords</dd>
+<dt>URL</dt>
+<dd>Unified Resource Locator</dd>
+<dt>Use constraints</dt>
+<dd>Constraints applied to assure the protection of privacy or intellectual property,
+and any special restrictions or limitations or warnings on using the resource</dd>
+<dt>Vector spatial representation</dt>
+<dd>Information about the vector spatial objects in the dataset</dd>
+<dt>Voice</dt>
+<dd>Telephone number by which individuals can speak to the responsible organisation or
+individual</dd>
+<dt>Geographic bounding box - West bound longitude</dt>
+<dd>Western-most coordinate of the limit of the dataset extent, expressed in longitude
+in decimal degrees (positive east)</dd>
+</dl>
+</pre>
+<p>
+More info about "Geo Network" tool can be found <a href='http://geonetwork-opensource.org/' target=_blank>here</a>.
+</p>
+
+<a name="mViewer_mapFunc"></a><a href="#top">Top</a>
+<h2>Map Viewer: Map functionalities</h2>
+<p>
+	The interface uses <i>Bing maps</i> based on a "Spherical Mercator projection", as shown in the following figure:
+	<br>
+	<img src='./images/_mViewer_mapFuncs_bingmap.png' width="250">
+	<br>
+	Click on <img src='./images/_mViewer_mapFuncs_move.png'> to navigate through the map: move the mouse cursor over the map and 
+	<br>
+	Click on <img src='./images/_mViewer_mapFuncs_move.png'> to navigate through the map: move the cursor over the map and (a) left-click and move over the map, (b) scroll the mouse to zoom in and out on the map, and (c) use the provided icon (below) to zoom in and out over the map.
+	<br>
+	<img src='./images/_mViewer_mapFuncs_zoom.png'>
+</p> 
+<p>
+To open a new page with a full-page Map Viewer, click on <img src='./images/_mViewer_mapFuncs_fullMap.png'> in the right-top corner of the Map Viewer.
+<br>
+<img src='./images/_mViewer_mapFuncs_fullMapEx.png' width=30%>

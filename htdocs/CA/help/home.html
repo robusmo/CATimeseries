@@ -1,0 +1,149 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Climate ADAPT: Timeseries tool help</title>
+
+<script src="./script/jquery-1.9.1.js"></script>
+<script src="./script/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" type="text/css" href="./css/jquery-ui.css"/>	
+<link rel="stylesheet" type="text/css" href="./css/main.css"/>	
+
+<script>
+	$(function() {
+	$( "#menu" ).menu();
+	});
+	</script>
+</head>
+<body>
+
+	<div id=menuTitle>
+	<label>Climate ADAPT: Timeseries tool help</label>
+	</div>
+
+	<div id=menuDiv>
+		<div id=menuHelp>
+			<ul id="menu">
+				<li><a href="" onClick="_loadHelpID('_ca_what');return false;">What is it Climate ADAPT Timeseries tool</a></li>
+				<li><a href="" onClick="_loadHelpID('_howUse');return false;">How to use the Climate ADAPT Time Series tool</a></li>
+				<li><a href="" onClick="_loadHelpID('_pageContent');return false;">Description of the page content</a></li>	
+				<li><a href="" onClick="_loadHelpID('_mViewer');return false;" >Description of the Map Viewer</a></li>	
+				<li><a href="" onClick="_loadHelpID('_queryBy');return false;">How to query a dataset</a></li>	
+				<li><a href="" onClick="_loadHelpID('_queryS');return false;">Query more datasets</a></li>	
+				<li><a href="" onClick="_loadHelpID('_graph');return false;">Description and usage of graphs</a></li>
+				<li><a href="" onClick="_loadHelpID('_FAQ');return false;">FAQ</a></li>
+				<li><a href="" onClick="_loadHelpID('_TROUBLES');return false;">Troubleshooting</a></li>
+			</ul>
+		</div>
+		<div id=menuContent>
+
+		</div>
+	
+	</div>
+	<div id=menuFooter>
+	</div>		
+	
+</body>
+</html>
+
+<script language=javascript>
+// open it
+var strHelp='_ca_what';
+
+if(window.opener!=null)
+{
+	if(typeof(window.opener.$("#txtHelpWhere")) == "object")	strHelp=window.opener.$("#txtHelpWhere").val();
+}
+// Function used to load the associated help 
+function _loadHelpID(strID){
+
+		if (strID=="")		strID='_ca_what';
+		var url=strID+'.html'
+		$.ajax({    
+		url : url,    
+		type: "GET",    		
+		async: false,
+		success: function(response, textStatus, jqXHR)    
+		{     					
+			location.hash = '#top';
+			//window.location.href=window.location.href.replace(/\#*/g, "")		
+			var strNext='';
+			var strPrev='';
+			var strTTitle='';
+			switch (strID)
+			{
+				case "_ca_what":
+					strNext="_howUse";
+					strPrev="";
+					strTTitle="What is it Climate ADAPT Timeseries tool";
+				break;
+				case "_howUse":
+					strNext="_pageContent";
+					strPrev="_ca_what";
+					strTTitle="How to use the Climate ADAPT Time Series tool";
+				break;
+				case "_pageContent":
+					strNext="_mViewer";
+					strPrev="_howUse";
+					strTTitle="Description of the page content";
+				break;
+				case "_mViewer":
+					strNext="_queryBy";
+					strPrev="_pageContent";
+					strTTitle="Description of the Map Viewer";
+				break;
+				case "_queryBy":
+					strNext="_queryS";
+					strPrev="_mViewer";
+					strTTitle="How to query a dataset";
+				break;		
+				case "_queryS":
+					strNext="_graph";
+					strPrev="_queryBy";
+					strTTitle="Query more datasets";
+				break;					
+				
+				case "_graph":
+					strNext="_FAQ";
+					strPrev="_queryBy";
+					strTTitle="Description and usage of graphs";
+				break;	
+				case "_FAQ":
+					strNext="_TROUBLES";					
+					strPrev="_graph";
+					strTTitle="FAQ";
+				break;	
+				case "_TROUBLES":
+					strNext="";
+					strPrev="_FAQ";
+					strTTitle="Troubleshooting";
+				break;	
+				
+			}
+			
+			var strContent='<a name="top"></a><br><br>'+response;
+			$("#menuContent").html(strContent);
+			strContent='';
+			if (strPrev=="")
+				strPrev="prev";
+			else
+				strPrev="<a href='' onClick="+'"'+"_loadHelpID('"+strPrev+"');return false;"+'"'+">prev</a>";
+			strContent+=strPrev+'&nbsp;&nbsp;&nbsp;<a href="#top">Top</a>&nbsp;&nbsp;&nbsp;';
+			if (strNext=="")
+				strNext="next";
+			else
+				strNext="<a href='' onClick="+'"'+"_loadHelpID('"+strNext+"');return false;"+'"'+">next</a>";
+			strContent+=strNext;
+			
+			//$("#menuTitle").html("prova");
+			$("#menuTitle").html("Climate ADAPT: Timeseries tool help > <i>"+strTTitle+"</i>");
+			$("#menuFooter").html(strContent);
+			return '';
+		},    
+		
+		error: function (jqXHR, textStatus, errorThrown){     
+		}});
+}
+// open it with default value if not set
+_loadHelpID(strHelp);
+</script>

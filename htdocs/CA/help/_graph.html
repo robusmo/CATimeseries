@@ -1,0 +1,248 @@
+<h2>Description and usage of graphs</h2>
+
+<ul>
+<li><a href="#graph_conf">Graphs: Configuration</a></li>
+<li><a href="#graph_datasel">Graphs: Dataset selection</a></li>
+<li><a href="#graph_datesel">Graphs: Date selection</a></li>
+<li><a href="#graph_err">Graphs: Error bar</a></li>
+<li><a href="#graph_exout">Graphs: Example of output</a></li>
+<li><a href="#graph_types">Graph: Types</a></li>
+<li><a href="#graph_rsf">Graphs: Refresh / Stop functionality</a></li>
+<li><a href="#graph_mmf">Graphs: Minimum and maximum axis values</a></li>
+<li><a href="#graph_zoom">Graphs: Zoom In/Out</a></li>
+<li><a href="#graph_exp">Graphs: Export</a></li>
+</ul>
+
+
+
+<a href="#top">Top</a><a name="graph_conf"></a>
+<h2>Graphs: Configuration</h2>
+<p> 
+To configure a new graph, click on <img src="./images/graphButton.png"> button.
+<br> 
+
+<ul>
+<li>
+<b>Select one or more datasets to plot</b>;
+<table width=60%>
+<tr>
+	<td>
+	A single dataset on the left Y axis:
+	<br>
+	<img src='./images/graphY1_onedataset.png' width="300">
+	</td>
+	<td>
+	More datasets on the left Y axis:
+	<br>
+	<img src='./images/graphY1_moredataset.png' width="300">
+	</td>
+	<td>
+	More datasets on both left and right Y axes:
+	<br>
+	<img src='./images/graphY1Y2_moredataset.png' width="300">
+	<br>
+	<img src='./images/graphY1Y2_moredataset2.png' width="300">
+	</td>	
+	</tr>	
+	</table>
+</ul>
+</li>
+<li>
+<b>Select a date interval;</b>
+</li>
+<li>
+<b>Choose whether to display the uncertainty or not;</b>
+</li>
+</ul>
+<br>
+<a href="#top">Top</a><a name="graph_datasel"></a>
+
+<h2>Graphs: Dataset selection</h2>
+<p> 
+Select from the list on the left-hand side, a valid "<b>Climate Indicator</b>" to load all available datasets:
+<br>
+<img src='./images/_graph_conf_datasetSel_fig1.png'>
+
+Use the Ctrl and Shift keys as follows:
+<ul>
+	<li>
+	<i>Ctrl key</i>: to select / deselect "non-consecutive" elements;
+	</li>
+	<li>
+	<i>Shift key</i>: to select / deselect "consecutive" elements;
+	</li>
+</ul>
+<br>
+Click on the Information button to open a dialog box that provides more information about all datasets selected:
+<br>
+<img src='./images/_graph_conf_info.png' width="300">
+<br>
+<br>
+The system will suggest a common date combination (<font color=green>in green</font>) in order to plot values available over the valid range for all datasets selected. Click on the Set button to define the "From date" and "To date" over the Graph Dialog box. Below is an example when a common date range is not found (<font color=red>in red</font>):
+<br>
+<img src='./images/_graph_conf_infoF.png' width="300">
+<br>
+<br>
+As default, the "From date" and "To date" fields are pre-defined with the minimum and maximum dates of all datasets selected. Note that this may result in an additional increase of graph creation time, due to date intervals that are not consistent.
+<br>
+<br>
+<a href="#top">Top</a><a name="graph_datesel"></a>
+
+<h2>Graphs: Date selection</h2>
+<p>
+After dataset selection, configure the date interval. Click on the Date Input text-box to open an interactive calendar and select a valid date either by clicking or writing directly in the textbox (format: "dd/mm/yyyy").
+<br>
+<img src="./images/calendar.png">
+<br>
+Click on the arrows to facilitate navigation through large timeframes. Click on the information button to see more details about datasets. As already mentioned, when a dataset has been selected, the "From date" and "To date" are automatically pre-defined with the minimum and maximum available dates of the selected layer. 
+<br>
+<a href="#top">Top</a><a name="graph_err"></a>
+
+<h2>Graphs: Error bar</h2>
+<p>In order to visualize the "uncertainty" inherent in the graph, click on the dedicated check-box <img src="./images/error.png">:
+<br>
+<br>
+<table>
+<tr>
+<td>
+<b>Standard Deviation</b>:<br>
+Shows the variation of the layer. When available, for a point, box or geographical area.
+</td>
+<td>
+<b>Spatial Deviation</b>:<br>Shows the calculated spatial deviation for the layer. Available only for box and geographical area.
+</td>
+</tr>
+<tr>
+<td>
+<img src='./images/standardDeviationEx.png' width=300>
+</td>
+<td>
+<img src='./images/spatialDeviationEx.png' width=300>
+</td>
+</tr>
+</table>
+<a href="#top">Top</a><a name="graph_output"></a>
+
+
+<h2>Graphs: Example of output</h2>
+<p>
+Below are some examples of output graphs from the Climate ADAPT Time Series Tool:
+<br>
+<img src='./images/graphExample.png' width=400>
+<br>
+<br>
+The time series graph is interactive: move the mouse over each point to read the corresponding date / value on the legend field below the graph.
+<br>
+<img src='./images/graphExample_legend.png' >
+<br>
+<br>
+Example of graph with a single dataset on the left axis for different dates:
+<br>
+<img src='./images/graphExample_moredataset.png' >
+<br>
+<br>
+Example of graph with more datasets on the left axis:
+<br>
+<img src='./images/graphExample_moredataset2.png' width=400>
+</p>
+<a href="#top">Top</a><a name="graph_types"></a>
+
+<h2>Graphs: Types</h2>
+<p> 
+Below are some examples of the different types of graphs that are available:
+</p>
+<ul>
+	<li>
+	<b>Line-bar graph:</b>
+	<br>
+	<img src='./images/graph_linebar.png' width=250>
+	</li>
+	<li>
+	<b>Vertical bar graph:</b>
+	<br>
+	<img src='./images/graph_vbar.png' width=250>
+	</li>
+	<li>
+	<b>Step chart graph:</b>
+	<br>
+	<img src='./images/graph_schart.png' width=250>
+	</li>
+	<li>
+	<b>Logarithmic scale:</b>
+	<br>
+	<img src='./images/graph_log.png' width=250>
+	</li>	
+</ul>
+<a href="#top">Top</a><a name="graph_rsf"></a>
+
+<h2>Graph: Refresh/Stop functionality</h2>
+<p>
+After clicking on the graph button in order to start the graph production, these following buttons
+<img src='./images/refreshStop.png'> (or these below the graph image <img src='./images/refreshStop_buttons.png'>)
+are available to:
+<ul>
+	<li><b>Graph</b> the graph creation;</li>	
+	<br><img src='./images/imgCreate.png'>
+	To start the graph creation;
+	<br>	
+	<li><b>Stop</b> the graph creation;</li>	
+	<br><img src='./images/imgStop.png'>
+	For example, if an error occurs during the input parameter selection or if it is not possible to read the information returned on the graph: click on stop button to stop the creation of the graph. This functionality will stop the graph creation. Re-click on graph button to reactivate.
+	<br>
+	<li><b>Refresh</b> the graph;</li>
+	<br><img src='./images/imgRefresh.png'>
+	The graph is automatically refreshed every 3 seconds. Click on this button to refresh the graph and show results in real time. These buttons will be disabled after each graph creation.
+</ul>
+Grey images when the selection is disabled.
+</p>
+<a href="#top">Top</a><a name="graph_mmf"></a>
+
+<h2>Graphs: Minimum and maximum axis values</h2>
+<p>
+During graph creation, or when it is completed, the user can change or set the minimum and maximum values for the left and right axes. 
+<br>
+<img src='./images/setAxix.png'>
+
+<br>
+Y1 (left y-axis): <img src='./images/setAxix_y1.png'>&nbsp;&nbsp;
+Y2 (right y-axis): <img src='./images/setAxix_y2.png'>
+<br>
+<br>
+Example:
+<br>
+<img src='./images/graphExample_sety1.png'>
+
+</p>
+<a href="#top">Top</a><a name="graph_zoom"></a>
+
+<h2>Graphs: Zoom In/Out</h2>
+<p>
+Click-and-drag with the mouse to zoom over a specific area in both directions (original, zoom over X axis, zoom over Y axis):
+<br>
+<img src='./images/graphExampleZoomInXY.png' >
+<br>
+Double-click over the graph to return to the original size.
+</p>
+<a href="#top">Top</a><a name="graph_exp"></a>
+
+
+
+<h2>Graphs: Export</h2>
+<p>
+To export the graph as PDF, click on the button below. The system will open a popup page with a PDF document as shown below:
+<br>
+<img src='./images/graphExample_pdf.png' > 
+<br>
+<img src='./images/graphExample_PDFdoc.png' width=500 >
+
+<br>
+<br>
+To export the graph as PNG, click on the button below. The system will open a popup page with a PNG image as shown below:
+<img src='./images/graphExample_png.png' > 
+<br>
+<img src='./images/graphExample_PNGdoc.png' width=500>
+<br>
+<br>
+Right click to save the graph.
+</p>
+

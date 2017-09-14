@@ -1,0 +1,62 @@
+@import "common.css";
+#content{
+	height: 800px;
+	border: 1px solid #E9EFC9;
+}
+.div_layer_descr{
+	float:left;	
+	width: 200px;	
+}
+ul li{
+	list-style-type: none;		
+}
+ul.ul_menu {						
+	list-style-type: none;		
+	margin-left: 0px; 
+	margin-right: 0px; 
+	margin-top:0px;
+}
+li.li_menu_select{		
+	background: #E9EFC9;
+	border: 0px solid #E9EFC9; 		
+}
+li.li_menu_table{
+	padding-top: 3px;
+}
+#tableTools{
+	margin-top: -10px;
+}
+#tableTools2{
+	margin-top: 4px;
+	
+}	
+#tableTools2 td#tableTools2_tdLabel{
+	color: grey;
+}	
+#container{
+	padding:0;
+	height:7em;
+}
+.containerSX{
+	float:left;
+	margin:0;
+	padding:0;
+	width:270px;
+	border: 0px solid #000;
+	height: 100%;
+}
+.containerDX{
+	margin-left:271px;
+	width:800px;
+	background:transparent;
+	border: 0px solid #000;
+	text-align:left;
+}		
+td#td_top{
+	vertical-align:top;
+}
+#divMap { 
+	position:relative; 
+	width:700px; 
+	height:500px;
+}

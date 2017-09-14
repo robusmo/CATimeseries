@@ -1,0 +1,133 @@
+/*
+HELP SECTION
+*/
+body {
+	font-family:  "Arial","Helvetica",  "Verdana", "sans-serif";			
+	color:#02213d;			
+	background-color: #F0F0F0;
+	font-size: 90%;
+}	 
+h2{
+	color: #02213d;
+}
+.ui-menu { 
+	width: 235px; 
+	font-size: 80%; 
+	margin: 5px;
+}
+@media screen
+{
+	div#menuDiv{
+		margin-top: 30px;			
+		margin-bottom: 60px;	
+	}
+	div#menuHelp{
+		float: left;
+		position: fixed;
+		width: 250px;
+		height:600px;
+		margin-top: 11px;
+		left: 0px;
+		border-top: 1px solid #0856A0;	
+		border-bottom: 1px solid #0856A0;	
+		border-right: 5px solid #A5BF26;	
+		background-color: #E9EFC9;
+		padding: 0px;
+	}
+	div#menuContent{
+		margin-left:  250px;
+		padding: 10px;			
+		color: #02213d;
+		font-size: 90%;
+		min-width: 500px;
+		background-color: #F0F0F0;
+	}
+	div#menuTitle{
+		background-color: #A5BF26;
+		border-top: 1px solid #0856A0;
+		border-bottom: 1px solid #0856A0;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 20px;	
+		width: 100%;
+		left: 0px;
+		height: 20px;
+		font-weight: bold;
+		top: 0px;
+		position: fixed;
+	}
+	div#menuFooter{
+		text-align: center;
+		background-color: #E9EFC9;
+		left: 0px;
+		border-top: 1px solid #0856A0;
+		border-bottom: 1px solid #0856A0;
+		padding-top: 10px;	
+		padding-bottom: 10px;
+		width: 100%;
+		min-width: 600px;
+		height: 20px;
+		font-weight: bold;
+		bottom: 0px;
+		position: fixed;
+	}
+	div#menuTitle label{
+		padding-left: 10px;
+	}
+}
+@media print
+{
+	div#menuDiv{
+		height: 100%;
+		width: 100%;
+	}
+	div#menuHelp{
+		float: left;
+		display: none;	
+		width: 250px;
+		height:559px;
+		border-bottom: 1px solid #0856A0;	
+		border-right: 5px solid #A5BF26;	
+		background-color: #E9EFC9;
+		padding: 0px;
+	}
+	div#menuTitle{
+		background-color: #A5BF26;	
+		padding-top: 10px;
+		padding-bottom: 10px;
+		width: 100%;
+		height: 20px;
+		font-weight: bold;	
+	}
+	div#menuTitle label{
+		padding-left: 10px;
+	}
+	div#menuFooter{
+		display: none;
+	}
+}
+div#menuContent ul li{
+	list-style-type: disc;
+}
+ul li{
+	list-style-type: none;		
+}
+		
+ul.ul_menu {						
+	list-style-type: none;		
+	margin-left: -40px; 
+	margin-right: 5px; 
+	margin-top:0px;
+	
+}
+li.li_menu_select{		
+	background: #E9EFC9;
+	border: 0px solid #E9EFC9; 		
+}
+li.li_menu_table{
+	padding-top: 3px;
+}
+table tr td{
+	font-size: 80%;
+	border: 1px solid #DCDCDC;
+}

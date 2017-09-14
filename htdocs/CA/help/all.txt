@@ -1,0 +1,1017 @@
+::::::::::::::
+_ca_what.html
+::::::::::::::
+<h2>What is Climate Adapt Timeseries tool?</h2>
+<p>
+Climate Adapt Timeseries tool is a web map viewer with the timeseries functionality.
+<br>
+<img src='./images/what_webpage.png' width=80%>
+<br>
+It collects dataset available on more platforms using OGC Standards as WMS to show the map, WFC to query a shapefile, WCS to request a coverage on a dataset and WPS to execute a processing on a dataset.
+</p>::::::::::::::
+_FAQ_1.html
+::::::::::::::
+<h2>FAQ</h2>
+<p>
+<b>1) Browsers supported</b>
+</p>
+<ul>
+	<li>
+	Internet Explorer 9, 10, 11
+	</li>
+	<li>
+	
+	Firefox
+	</li>
+	<li>
+	Google Chrome
+	</li>
+	<li>
+	Opera
+	</li>
+	<li>
+	Safari
+	</li>
+</ul>	
+
+</table>
+::::::::::::::
+_FAQ_2.html
+::::::::::::::
+<h2>FAQ</h2>
+<p>
+<b>2) Differences between a raster and a shapefile</b>
+</p>
+<p>
+A raster consists of a matrix of cells (or pixels) organized into rows and columns (or a grid) where each cell contains a value representing information, such as temperature. Rasters are digital aerial photographs, imagery from satellites, digital pictures, or even scanned maps.
+<br>
+<br>
+Example of raster dataset:
+<br>
+<img src='./images/raster.png'>
+</p>
+<p>
+Shapefiles are a simple, format for storing the geometric location and attribute information of geographic features. Geographic features in a shapefile can be represented by points, lines, or polygons (areas). The workspace may also contain dBASE tables, which can store additional attributes that can be joined to a shapefile's features.
+<br>
+<br>
+Example of shapefile:
+<br>
+
+ 
+<br>
+<img src='./images/shapefile.png'>
+</p>::::::::::::::
+_FAQ_3.html
+::::::::::::::
+<h2>FAQ</h2>
+<p>
+<b>3) What is it the "Spherical Mercator projection"?</b>
+</p>
+<p>
+This term is used to refer to the fact that these providers use a Mercator projection which treats the earth as a sphere, rather than a projection which treats the earth as an ellipsoid. This affects calculations done based on treating the map as a flat plane, and is therefore important to be aware of when working with these map providers.
+</p>
+<p>
+In order to properly overlay data on top of the maps provided by the commerical API providers, it is neccesary to use this projection. This applies primarily to displaying raster tiles over the commercial API layers - such as TMS, WMS, or other similar tiles.
+</p>
+<p>
+In order to work well with the existing commercial APIs, many users who create data designed for use within Google Maps will also use this projection. One prime example is OpenStreetMap, whose raster map tiles are all projected into the 'spherical mercator' projection.
+</p>
+<p>
+Projections in GIS are commonly referred to by their "EPSG" codes, identifiers managed by the European Petroleum Survey Group. One common identifier is "EPSG:4326	, which describes maps where latitude and longitude are treated as X/Y values. Spherical Mercator has an official designation of EPSG:3857. However, before this was established, a large amount of software used the identifier EPSG:900913. This is an unofficial code, but is still the commonly used code in OpenLayers. Any time you see the string "EPSG:4326", you can assume it describes latitude/longitude coordinates. Any time you see the string "EPSG:900913", it will be describing coordinates in meters in x/y.
+</p>
+
+::::::::::::::
+_FAQ.html
+::::::::::::::
+<h2>FAQ</h2>
+<a name="1"></a>
+<p>
+<b>1) Browsers supported</b>
+</p>
+
+
+<p>
+<b>2) Differences between a raster and a shapefile</b>
+</p>
+
+
+
+<p>
+<b>3) What is it the "Spherical Mercator projection"?</b>
+</p>
+
+ ::::::::::::::
+_graph_conf_datasetSel.html
+::::::::::::::
+<h2>Graph configuration: dataset selection</h2>
+<p> 
+Select from the first list a valid value as "Climate Indicator":
+<br>
+<img src='./images/_graph_conf_datasetSel_fig1.png'>
+<ul>
+	<li>
+	all: to load all available dataset;
+	</li>
+	<li>
+	specific value: to load all available dataset that belong to this "Climate indicator";
+	</li>
+</ul>
+
+The "Dataset" list will be loaded with all raster and vector dataset available on the system that belong to the specific "Climate indicator".
+<br>
+If choose on "Climate indicator":
+<ul>
+	<li>
+	all: only one dataset could be choose on "Dataset list";
+	</li>
+	<li>
+	specific value: one or more dataset could be choose on "Dataset list";
+	<br>
+	<img src='./images/_graph_conf_datasetSel_fig2.png'>
+	</li>
+</ul>
+<br>
+
+Use:
+<ul>
+	<li>
+	Ctrl key: to select/deselect "not consecutive" elements;
+	</li>
+	<li>
+	Shift key: to select/deselect "consecutive" elements;
+	</li>
+</ul>
+<br>
+Click on info button to open a dialog to show more info about all dataset selected:
+<br>
+<img src='./images/_graph_conf_info.png'>
+<br>
+Since the creation of the graph may take some time, could be important analyze the frequency and date interval for all dataset selected.
+
+<br>::::::::::::::
+_graph_conf_dateSel.html
+::::::::::::::
+<h2>Graph configuration: date selection</h2>
+<p>
+After dataset selection, configure the date interval.
+<br>
+Click on a date input textbox to open an interactive calendar in a small overlay:
+<br>
+<img src="./images/calendar.png">
+<br>
+and select a valid date with the mouse click or write directly into the textbox a valid date in European format ("dd/mm/yyyy", ie: "05/11/2012").
+<br>
+Click on "arrows" to facilitate navigation through large timeframes.
+<br>
+Click on info button to read more details about the dataset and the time coverage.
+<br>
+When a dataset has been selected from and to date are automatically changed to start and end date of the selected layer.
+
+::::::::::::::
+_graph_conf_errorbar.html
+::::::::::::::
+<h2>Graph configuration: error bar</h2>
+<p>Enabled on the apposite checkbox <img src="./images/error.png"> the possibility to show the deviation associated to all layers:
+<ul>
+<li>
+<b>standard deviation</b>:
+<br>
+to show the variation of the layer;
+<br>
+when available, over point, box and geographical area;
+<br>
+<img src='./images/standardDeviationEx.png' width=50%>
+</li>
+<li>
+<b>spatial deviation</b>:
+<br>
+to show the calculated spatial deviation for the layer;
+<br>
+available only over box and geographical area;
+<br>
+<img src='./images/spatialDeviationEx.png' width=50%>
+</li>
+</ul>
+::::::::::::::
+_graph_conf.html
+::::::::::::::
+<h2>Graph configuration</h2>
+<p> 
+After clicking on <img src="./images/graphButton.png"> button, a configuration dialog will be open in order to configure the graph and:
+<br> 
+<ul>
+<li>
+<b>show one or more dataset</b>;
+<ul>
+	<li>
+	a single dataset on left Y axis:
+	<br>
+	<img src='./images/graphY1_onedataset.png' width="50%">
+	</li>
+	<li>
+	more dataset on left Y axis:
+	<br>
+	<img src='./images/graphY1_moredataset.png' width="50%">
+	</li>
+	<li>
+	more dataset on left and right Y axis:
+	<br>
+	<img src='./images/graphY1Y2_moredataset.png' width="50%">
+	<br>
+	<img src='./images/graphY1Y2_moredataset2.png' width="50%">
+	</li>	
+</ul>
+</li>
+<li>
+select date interval;
+</li>
+<li>
+show or not the error bar;
+</li>
+</ul>
+::::::::::::::
+_graph_configuration.html
+::::::::::::::
+ ::::::::::::::
+_graph_conf_y1.html
+::::::::::::::
+<h2>Graph configuration: left y axes</h2>
+<p>
+In order to add one or more dataset shown as right Y axes,
+<br>
+<img src="./images/graphY1Y2_moredataset.png" width=70%>
+<br>
+select each dataset as described on the previous page on the right column:
+<br> 
+<img src="./images/graphConf_y2.png" width=70%>
+</p>::::::::::::::
+_graph_conf_y2.html
+::::::::::::::
+<h2>Graph configuration: right y axes</h2>
+<p>
+In order to add one or more dataset shown as right Y axes,
+<br>
+<img src="./images/graphY1Y2_moredataset.png" width=70%>
+<br>
+select each dataset as described on the previous page on the right column:
+<br> 
+<img src="./images/graphConf_y2.png" width=70%>
+<br>
+Please, pay attention when you select more than one dataset on the same graph: time coverage could be very different and the time requested to create the graph could become long.
+</p>::::::::::::::
+_graph_export.html
+::::::::::::::
+<h2>Graph output: export</h2>
+<p>
+Click on the right of the graph:
+<ul>
+<li>
+<img src='./images/graphExample_pdf.png' width=100%> to export as PDF
+</li>
+<li>
+<img src='./images/graphExample_png.png' width=100%> to export as PNG
+</li>
+</ul>
+</p>::::::::::::::
+_graph_howTo.html
+::::::::::::::
+ ::::::::::::::
+_graph.html
+::::::::::::::
+<h2>Graph configuration</h2>
+<p>
+Visit this session to understand how to configure a correct timeseries.
+</p>::::::::::::::
+_graph_output_example.html
+::::::::::::::
+<h2>Graph output: example</h2>
+<p>
+Here an example of graph:
+<br>
+<img src='./images/graphExample.png' width=60%>
+<br>
+The timeseries is interactive: move with the mouse over each point to read into the legend
+<br>
+<img src='./images/graphExample_legend.png' width=50%>
+each corresponding date/value.
+<br>
+<br>
+Example of graph with more dataset:
+<br>
+<img src='./images/graphExample_moredataset.png' width=100%>
+<br>
+<img src='./images/graphExample_moredataset2.png' width=40%>
+<br>
+<br>
+Click-and-drag with the mouse to zoom over a specific area in both direction:
+<br>
+<img src='./images/graphExampleZoomInXY.png' width=60%>
+<br>
+Double click over the graph to come back to the original size.
+</p>
+::::::::::::::
+_graph_output_graphExport.html
+::::::::::::::
+<h2>Graph output: export</h2>
+<p>
+Click on the tool section:
+<ul>
+<li>
+<img src='./images/graphExample_pdf.png' > to export as PDF.
+<br>
+The system will open a popup page with a PDF document as shown below:
+<br>
+<img src='./images/graphExample_PDFdoc.png' width=50% >
+</li>
+<li>
+<img src='./images/graphExample_png.png' > to export as PNG.
+<br>
+The system will open a popup page with a PNG image as shown below: 
+<br>
+<img src='./images/graphExample_PNGdoc.png' width=50%>
+</li>
+</ul>
+<br>
+Right click to save it.
+</p>
+::::::::::::::
+_graph_output_graphMinMax.html
+::::::::::::::
+<h2>Graph output: min and max axis values</h2>
+<p>
+During the graph creation or once is completed, the user can change/set minimun and maximun values of each y axis.
+<br>
+<img src='./images/setAxix.png'>
+<br>
+Click on the apposite cell to change the corresponding value for:
+<br>
+Y1: <img src='./images/setAxix_y1.png'>&nbsp;&nbsp;
+Y2: <img src='./images/setAxix_y2.png'>
+<br>
+Example:
+<br>
+<img src='./images/graphExample_sety1.png'>
+<br>
+Click on reset button <img src='./images/reset.png'> to reset all minimun and maximun values.
+</p>::::::::::::::
+_graph_output_graphRead.html
+::::::::::::::
+<h2>Graph output: read the graph</h2>
+<p>
+The graph is fully interactive: move with the mouse over each point to read below the graph the related value as shown in the following example
+<br>
+<img src='./images/'>
+</p>::::::::::::::
+_graph_output.html
+::::::::::::::
+<h2>Graph configuration: output</h2>
+<p>Here an example of timeseries graph:
+<br>
+<img src='./images/_graph_output_example.png' width=70%>
+<br>
+<img src='./images/_graph_output_example2.png'  width=70%>
+
+</p>
+
+::::::::::::::
+_graph_output_startStop.html
+::::::::::::::
+<h2>Graph output: refresh/stop functionality</h2>
+<p>
+After clicking on graph button in order to produce the graph, these following buttons
+<img src='./images/refreshStop.png'>
+will be available to:
+<ul>
+	<li><b>stop</b> the graph creation;</li>	
+	<br>
+	For example, an error occured during the input parameters selection or the information returned on the graph are enough to read it: click on stop button to stop the creation of the graph.
+	<br>
+	This functionality will stop the graph creation: re-click on graph button to re-activate the creation of it.
+	<br>
+	<br>
+	<li><b>refresh</b> the graph;</li>
+	<br>
+	The graph is automatically refreshed every 3 seconds: click on this button to refresh the graph and show results in real time;
+</ul>
+These buttons will be disabled after the graph creation: <img src='./images/refreshStop_dis.png'>
+</p>::::::::::::::
+_graph_output_types.html
+::::::::::::::
+<h2>Graph types</h2>
+<p> 
+Here, some example of all availables graph types:
+</p>
+<ul>
+	<li>
+	<b>linebar graph:</b>
+	<br>
+	<img src='./images/graph_linebar.png'>
+	</li>
+	<li>
+	<b>vertical bar graph:</b>
+	<br>
+	<img src='./images/graph_vbar.png'>
+	</li>
+	<li>
+	<b>step chart graph:</b>
+	<br>
+	<img src='./images/graph_schart.png'>
+	</li>
+	<li>
+	<b>step chart graph:</b>
+	<br>
+	<img src='./images/graph_log.png'>
+	</li>	
+</ul>::::::::::::::
+home.html
+::::::::::::::
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Climate Adapt: Timeseries tool help</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" type="text/css" href="/comm/css/main.css"/>	
+<script>
+$(function() {
+$( "#menu" ).menu();
+});
+</script>
+<style>
+
+</style>
+</head>
+<body onLoad="_loadHelpID('CA_WHAT');">
+<div id=menuDiv>
+
+<div id=menuTitle>
+<label>Climate Adapt: Timeseries tool help</label>
+</div>
+
+<div id=menuHelp>
+
+<ul id="menu">
+<!--<li class="ui-state-disabled"><a href="#">Aberdeen</a></li>-->
+	<li><a href="#" onClick="_loadHelpID('_ca_what');">What is it Climate Adapt Timeseries tool?</a></li>
+	
+	<li><a href="#" onClick="_loadHelpID('_pageContent');">Page content</a></li>
+	
+	<li><a href="#" onClick="_loadHelpID('_mViewer');" >Map viewer</a>
+		<ul>			
+			<li><a href="#" onClick="_loadHelpID('_mViewer_dataSelection');">Data selection</a>
+				<ul>			
+				<li><a href="#" onClick="_loadHelpID('_mViewer_dataSelection_raster');">A raster dataset</a></li>
+				<li><a href="#" onClick="_loadHelpID('_mViewer_dataSelection_vector');">A vector dataset</a></li>
+				</ul>
+			</li>
+			<li><a href="#" onClick="_loadHelpID('_mViewer_tableOfContents');">Table of contents</a>
+			<ul>
+				<li><a href="#" onClick="_loadHelpID('_mViewer_tableOfContents_metadata');">Metadata link</a></li>
+				<li><a href="#" onClick="_loadHelpID('_mViewer_tableOfContents_exportPDF');">Export as PDF</a></li>
+			</ul>
+			</li>
+			<li><a href="#" onClick="_loadHelpID('_mViewer_mapFuncs');">Map functionalities</a></li>
+		</ul>
+	</li>
+	
+	<li><a href="#" onClick="_loadHelpID('_queryBy');">Query</a>
+		<ul>
+			<li><a href="#" onClick="_loadHelpID('_queryBy_Point');">by point</a></li>
+			<li><a href="#" onClick="_loadHelpID('_queryBy_Box');">by box</a></li>
+			<li><a href="#" onClick="_loadHelpID('_queryBy_Shape');">by shape</a></li>
+			<li><a href="#" onClick="_loadHelpID('_queryBy_Links');">National and Meteo links</a></li>
+		</ul>
+	</li>
+	
+	<li><a href="#" onClick="_loadHelpID('_graph');">Graph</a>
+		<ul>
+			<li>
+				<a href="#" onClick="_loadHelpID('_graph_conf');">Configuration</a>
+				<ul>					
+					<li><a href="#" onClick="_loadHelpID('_graph_conf_datasetSel');">Dataset selection</a></li>
+					<li><a href="#" onClick="_loadHelpID('_graph_conf_y2');">Second Y axes</a></li>
+					<li><a href="#" onClick="_loadHelpID('_graph_conf_dateSel');">Date selection</a></li>					
+					<li><a href="#" onClick="_loadHelpID('_graph_conf_errorbar');">Error bar</a></li>					
+				</ul>
+			</li>
+			<li><a href="#"onClick="_loadHelpID('_graph_output');" >Output</a>
+				<ul>					
+					<li><a href="#" onClick="_loadHelpID('_graph_output_example');">Example</a></li>
+					<li><a href="#" onClick="_loadHelpID('_graph_output_types');">Graph types</a></li>
+					<li><a href="#" onClick="_loadHelpID('_graph_output_startStop');">Start/Stop</a></li>					
+					<li><a href="#" onClick="_loadHelpID('_graph_output_graphMinMax');">Min and Max axis values</a></li>										
+					<li><a href="#" onClick="_loadHelpID('_graph_output_graphExport');">Export the graph</a></li>					
+				</ul>			
+			</li>
+			
+		</ul>
+	</li>	
+	<li><a href="#" >FAQ</a>
+		<ul>
+			<li><a href="#" onClick="_loadHelpID('_FAQ_1');">Browsers supported</a></li>			
+			<li><a href="#" onClick="_loadHelpID('_FAQ_2');">Differences between a raster and a shapefile</a></li>			
+			<li><a href="#" onClick="_loadHelpID('_FAQ_3');">What is it the "Spherical Mercator projection"?</a></li>			
+		</ul>
+	</li>
+</ul>
+</div>
+<div id=menuContent>
+
+</div>
+</div>
+</body>
+</html>
+
+<script language=javascript>
+function _loadHelpID(strID){
+
+		var url=strID+'.html'
+		$.ajax({    
+		url : url,    
+		type: "GET",    		
+		async: false,
+		success: function(response, textStatus, jqXHR)    
+		{     								
+			document.getElementById("menuContent").innerHTML='<a name="top"></a>'+response+'<p><a href="#top">Top</a></a>';	
+			return '';
+		},    
+		
+		error: function (jqXHR, textStatus, errorThrown){     
+		}});
+}
+</script>::::::::::::::
+_mViewer_dataSelection.html
+::::::::::::::
+<h2>Map viewer: Data selection</h2>
+<p>
+
+Select from the first list <img src="./images/mViewDataSel_firstCombo.png"> a valid "Climate Indicator":
+<ul>
+	<li><b>all</b>, <i>to load alla dataset;</i></li>
+	<li><b>a specific "Climate Indicator"</b>, <i>to load all layers that belong to the specific "Climate Indicator";</i></li>	
+</ul>
+
+All layers will be loaded automatically to the "Dataset list": choose a valid one to show it into the map.
+<br>
+Only for some specific dataset a "Scenario list" will automatically loaded: select a dataset to finally show the map.
+<br>
+<img src="./images/mViewDataSel_scenario.png" width=40%>
+
+<br>
+<br>
+Example of layer:
+<img src="./images/mViewDataSel_exLayer.png" width=50%>
+<br>
+All layers could be splitted as:
+<ul>
+	<li><b>Observations</b>, <i>all layers refer to the state of being observed;</i></li>
+	<li><b>Projections</b>, <i>all layers refer to the state of being projected;</i></li>
+</ul>	
+Change year and period to change the date of the just uploaded dataset:
+<img src="./images/mViewDataSel_changeDate.png">
+This dataset will be added into the "Table of Contents" with a green shadow as showed below:
+<br>
+<img src="./images/mViewDataSel_justUploaded.png">
+<br>
+Click on the following image <img src="./images/mViewDataSel_tableicon.png"> to open a popup with the complete list of all available dataset:
+<br>
+<img src="./images/mViewDataSel_table.png">
+<br>
+Select a specific dataset or write into the apposite box your search criteria: a list that match the search criteria will be shown.
+<br>
+<img src="./images/mViewDataSel_tableEx.png">
+<br>
+
+::::::::::::::
+_mViewer_dataSelection_raster.html
+::::::::::::::
+<h2>A raster dataset</h2>
+<p> 
+A raster consists of a matrix of cells (or pixels) organized into rows and columns (or a grid) where each cell contains a value representing information, such as temperature. Rasters are digital aerial photographs, imagery from satellites, digital pictures, or even scanned maps.
+<br>
+<br>
+Example of raster dataset:
+<br>
+<img src='./images/raster.png'>::::::::::::::
+_mViewer_dataSelection_vector.html
+::::::::::::::
+<h2>A shapefile dataset</h2>
+<p> 
+Shapefiles are a simple, format for storing the geometric location and attribute information of geographic features. Geographic features in a shapefile can be represented by points, lines, or polygons (areas). The workspace may also contain dBASE tables, which can store additional attributes that can be joined to a shapefile's features.
+<br>
+<br>
+Example of shapefile:
+<br>
+
+ 
+<br>
+<img src='./images/shapefile.png'>::::::::::::::
+_mViewer.html
+::::::::::::::
+<h2>Map viewer</h2>
+<p>
+Visit this session to understand how to show a dataset into the map.
+</p>::::::::::::::
+_mViewer_mapFuncs.html
+::::::::::::::
+<h2>Map functionalities</h2>
+<p>
+	The interface uses Bing maps based on "Spherical Mercator projection" as shown in the following figure:
+	<br>
+	<img src='./images/_mViewer_mapFuncs_bingmap.png' width="50%">
+	<br>
+	Click on <img src='./images/_mViewer_mapFuncs_move.png'> to navigate through the map: move the mouse cursor over the map and 
+	<ul>
+		<li>left mous click and move over the map;</li>
+		<li>or scroll the mouse, to zoom in/out over the map;</li>		
+		<li>click on <img src='./images/_mViewer_mapFuncs_zoom.png'> to zoom in/out over the map;</li>
+	</ul>
+</p> 
+<p>
+Click on <img src='./images/_mViewer_mapFuncs_fullMap.png'> to open a new page with a full page map viewer.
+<br>
+<img src='./images/_mViewer_mapFuncs_fullMapEx.png' width=30%>::::::::::::::
+_mViewer_tableOfContents_exportPDF.html
+::::::::::::::
+<a name=top></a>
+<h2>Map viewer: Export as PDF</h2>
+<p>
+Click on <img src="./images/mViewDataSel_exportPDFImg.png"> to export each single dataset as a PDF document, as shown in the following feature:
+<br>
+<img src="./images/mViewDataSel_pdfExamplePage.png">
+<br>
+<br>
+More info about Adobe PDF Reader here: <a href='http://get.adobe.com/reader/' target="_blank">http://get.adobe.com/reader/</a>
+</p> ::::::::::::::
+_mViewer_tableOfContents.html
+::::::::::::::
+<h2>Map viewer: Table of contents</h2>
+<p>
+
+<br>All loaded dataset will added on the "<b>Table of Contents</b>" section, each with its legend: 
+<br>
+<img src="./images/mViewDataSel_exTableCont.png">
+<br>
+For each layer, click on:
+<ul>
+	<li><img src="./images/mViewDataSel_deleteImg.png"> to delete the selected dataset from your list;</li>
+	<li><img src="./images/mViewDataSel_metadataImg.png"> to open a dedicated webpage about metadata;</li>
+	<li><img src="./images/mViewDataSel_exportPDFImg.png"> to export the map as a PDF file;</li>
+</ul>
+<br>
+Use the "<b>drag and drop functionality</b>" to move all datasets: remember that when the date is changed, this is referred always to the first layer (identified by a green shadow).
+<br>
+<img src="./images/mViewDataSel_layerShadow.png">
+</p>
+::::::::::::::
+_mViewer_tableOfContents_metadata.html
+::::::::::::::
+<h2>Map viewer: Metadata link</h2>
+<p>
+Here an example of metadata page referred to a dataset:
+<br>
+<img src='./images/_mViewer_tableOfContents_metadataEx.png'>
+<br>
+All metadata dataset are INSPIRE compliant.
+<br>
+More info about INSPIRE can be found <A href='http://inspire.ec.europa.eu/' target=_blank>here</a>.
+
+
+<><dl class="docutils">
+<dt>Access constraints</dt>
+<dd>Access constraints applied to assure the protection of privacy or intellectual
+property, and any special restrictions or limitations on obtaining the
+resource</dd>
+<dt>Abstract</dt>
+<dd>Brief narrative summary of the content of the resource(s)</dd>
+<dt>Administrative area</dt>
+<dd>State, province of the location</dd>
+<dt>Temporal extent - Begin date</dt>
+<dd>Formatted as 2007-09-12T15:00:00 (YYYY-MM-DDTHH:mm:ss)</dd>
+<dt>Character set</dt>
+<dd>Full name of the character coding standard used for the metadata set</dd>
+<dt>Grid spatial representation - Cell geometry</dt>
+<dd>Identification of grid data as point or cell</dd>
+<dt>City</dt>
+<dd>City of the location</dd>
+<dt>Reference System Info - Code</dt>
+<dd>Alphanumeric value identifying an instance in the namespace</dd>
+<dt>Country</dt>
+<dd>Country of the physical address</dd>
+<dt>Data quality info</dt>
+<dd>Provides overall assessment of quality of a resource(s)</dd>
+<dt>Date</dt>
+<dd>Reference date and event used to describe it (YYYY-MM-DD)</dd>
+<dt>Date stamp</dt>
+<dd>Date that the metadata was created (YYYY-MM-DDThh:mm:ss)</dd>
+<dt>Date type</dt>
+<dd>Event used for reference date</dd>
+<dt>Delivery point</dt>
+<dd>Address line for the location (as described in ISO 11180, annex A)</dd>
+<dt>Equivalent scale - Denominator</dt>
+<dd>The number below the line in a vulgar fraction</dd>
+<dt>Data Quality - Description</dt>
+<dd>Description of the event, including related parameters or tolerances</dd>
+<dt>OnLine resource - Description</dt>
+<dd>Detailed text description of what the online resource is/does</dd>
+<dt>Descriptive keywords</dt>
+<dd>Provides category keywords, their type, and reference source</dd>
+<dt>Grid spatial representation - Dimension name</dt>
+<dd>Name of the axis i.e. row, column</dd>
+<dt>Grid spatial representation - Dimension size</dt>
+<dd>Number of elements along the axis</dd>
+<dt>Dimension size Resolution</dt>
+<dd>Number of elements along the axis</dd>
+<dt>Distribution info</dt>
+<dd>Provides information about the distributor of and options for obtaining the
+resource(s)</dd>
+<dt>Geographic bounding box - East bound longitude</dt>
+<dd>Eastern-most coordinate of the limit of the dataset extent, expressed in
+longitude in decimal degrees (positive east)</dd>
+<dt>Edition</dt>
+<dd>Version of the cited resource</dd>
+<dt>Electronic mail address</dt>
+<dd>Address of the electronic mailbox of the responsible organisation or individual</dd>
+<dt>Temporal extent - End date</dt>
+<dd>Formatted as 2007-09-12T15:00:00 (YYYY-MM-DDTHH:mm:ss)</dd>
+<dt>Equivalent scale</dt>
+<dd>Level of detail expressed as the scale of a comparable hardcopy map or
+chart</dd>
+<dt>Extent</dt>
+<dd>Information about spatial, vertical, and temporal extent</dd>
+<dt>Facsimile</dt>
+<dd>Telephone number of a facsimile machine for the responsible organisation or
+individual</dd>
+<dt>File identifier</dt>
+<dd>Unique identifier for this metadata file</dd>
+<dt>Vector spatial representation - Geometric object type</dt>
+<dd>Name of point and vector spatial objects used to locate zero-, one-and
+two-dimensional spatial locations in the dataset</dd>
+<dt>Vector spatial representation - Geometric object count</dt>
+<dd>Total number of the point or vector object type occurring in the dataset</dd>
+<dt>Geographic bounding box</dt>
+<dd>Geographic position of the dataset</dd>
+<dt>Grid spatial representation</dt>
+<dd>Information about grid spatial objects in the dataset</dd>
+<dt>Grid spatial representation - Resolution value</dt>
+<dd>Degree of detail in the grid dataset</dd>
+<dt>Grid spatial representation - Transformation parameter availability</dt>
+<dd>Indication of whether or not parameters for transformation exists</dd>
+<dt>Data Quality - Hierarchy level</dt>
+<dd>Hierarchical level of the data specified by the scope</dd>
+<dt>Identification info</dt>
+<dd>Basic information about the resource(s) to which the metadata applies</dd>
+<dt>Point of Contact - Individual name</dt>
+<dd>Name of the responsible person- surname, given name, title separated by a
+delimiter</dd>
+<dt>Keyword</dt>
+<dd>Commonly used word(s) or formalised word(s) or phrase(s) used to describe the
+subject</dd>
+<dt>Data Language</dt>
+<dd>Language used for documenting data</dd>
+<dt>Metadata - Language</dt>
+<dd>Language used for documenting metadata</dd>
+<dt>Data Quality - Lineage</dt>
+<dd>Non-quantitative quality information about the lineage of the data specified by
+the scope. Mandatory if report not provided</dd>
+<dt>OnLine resource - Linkage</dt>
+<dd>Location (address) for on-line access using a Uniform Resource Locator address or
+similar addressing scheme such as <a class="reference external" href="http://www.statkart.no/isotc211">http://www.statkart.no/isotc211</a></dd>
+<dt>Maintenance and update frequency</dt>
+<dd>Frequency with which changes and additions are made to the resource after the
+initial resource is completed</dd>
+<dt>Metadata author</dt>
+<dd>Party responsible for the metadata information</dd>
+<dt>Metadata standard name</dt>
+<dd>Name of the metadata standard (including profile name) used</dd>
+<dt>Metadata standard version</dt>
+<dd>Version (profile) of the metadata standard used</dd>
+<dt>OnLine resource - Name</dt>
+<dd>Name of the online resource</dd>
+<dt>Geographic bounding box - North bound latitude</dt>
+<dd>Northern-most, coordinate of the limit of the dataset extent expressed in latitude
+in decimal degrees (positive north)</dd>
+<dt>Grid spatial representation - Number of dimensions</dt>
+<dd>Number of independent spatial-temporal axes</dd>
+<dt>Distribution Info - OnLine resource</dt>
+<dd>Information about online sources from which the resource can be obtained</dd>
+<dt>Point of Contact - Organisation name</dt>
+<dd>Name of the responsible organisation</dd>
+<dt>Other constraints</dt>
+<dd>Other restrictions and legal prerequisites for accessing and using the
+resource</dd>
+<dt>Point of contact</dt>
+<dd>Identification of, and means of communication with, person(s) and organisations(s)
+associated with the resource(s)</dd>
+<dt>Point of contact - Position name</dt>
+<dd>Role or position of the responsible person</dd>
+<dt>Postal code</dt>
+<dd>ZIP or other postal code</dd>
+<dt>Presentation form</dt>
+<dd>Mode in which the resource is represented</dd>
+<dt>OnLine resource - Protocol</dt>
+<dd>Connection protocol to be used</dd>
+<dt>Purpose</dt>
+<dd>Summary of the intentions with which the resource(s) was developed</dd>
+<dt>Reference system info</dt>
+<dd>Description of the spatial and temporal reference systems used in the
+datasetData</dd>
+<dt>Data Quality - Report</dt>
+<dd>Quantitative quality information for the data specified by the scope. Mandatory if
+lineage not provided</dd>
+<dt>Grid spatial representation - Resolution value</dt>
+<dd>Degree of detail in the grid dataset</dd>
+<dt>Point of contact - Role</dt>
+<dd>Function performed by the responsible party</dd>
+<dt>Geographic bounding box - South bound latitude</dt>
+<dd>Southern-most coordinate of the limit of the dataset extent, expressed in latitude
+in decimal degrees (positive north)</dd>
+<dt>Spatial representation info</dt>
+<dd>Digital representation of spatial information in the dataset</dd>
+<dt>Spatial representation type</dt>
+<dd>Method used to spatially represent geographic information</dd>
+<dt>Data Quality - Statement</dt>
+<dd>General explanation of the data producer&#8217;s knowledge about the lineage of a
+dataset</dd>
+<dt>Status</dt>
+<dd>Status of the resource(s)</dd>
+<dt>Supplemental Information</dt>
+<dd>Any other descriptive information about the dataset</dd>
+<dt>Temporal Extent</dt>
+<dd>Time period covered by the content of the dataset</dd>
+<dt>Title</dt>
+<dd>Name by which the cited resource is known</dd>
+<dt>Topic category code</dt>
+<dd>High-level geographic data thematic classification to assist in the grouping and
+search of available geographic data sets. Can be used to group keywords as well.
+Listed examples are not exhaustive. NOTE It is understood there are overlaps between
+general categories and the user is encouraged to select the one most
+appropriate.</dd>
+<dt>Grid spatial representation - Transformation parameter availability</dt>
+<dd>Indication of whether or not parameters for transformation exists</dd>
+<dt>Vector spatial representation - Topology level</dt>
+<dd>Code which identifies the degree of complexity of the spatial relationships</dd>
+<dt>Type</dt>
+<dd>Subject matter used to group similar keywords</dd>
+<dt>URL</dt>
+<dd>Unified Resource Locator</dd>
+<dt>Use constraints</dt>
+<dd>Constraints applied to assure the protection of privacy or intellectual property,
+and any special restrictions or limitations or warnings on using the resource</dd>
+<dt>Vector spatial representation</dt>
+<dd>Information about the vector spatial objects in the dataset</dd>
+<dt>Voice</dt>
+<dd>Telephone number by which individuals can speak to the responsible organisation or
+individual</dd>
+<dt>Geographic bounding box - West bound longitude</dt>
+<dd>Western-most coordinate of the limit of the dataset extent, expressed in longitude
+in decimal degrees (positive east)</dd>
+</dl>
+
+<p>
+More info about GeoNetwork can be found <a href='http://geonetwork-opensource.org/' target=_blank>here</a>.
+</p>
+
+::::::::::::::
+_pageContent.html
+::::::::::::::
+<h2>Page Content</h2>
+<p>
+	The page is composed by:
+	<ul>		
+		<li><b>a map viewer section</b></li>
+		<br><img src='./images/variableSection.png'>&nbsp;<img src='./images/mapViewer.png' width=50%>
+		<br>
+		Use this area to show dataset into the map.
+		<br>
+		<br>
+		<li><b>a query configuration section</b></li>
+		<br><img src='./images/queryConf.png'>
+		<br>
+		<br>
+		Use this area to select a valid geographical region to query.
+		<li><b>a graph configuration section</b></li>
+		<br><img src='./images/graphConf.png'>
+		<br>
+		<br>
+		Use this area to configure the query and show the graph.
+	</ul>
+</p>::::::::::::::
+_queryBy_Box.html
+::::::::::::::
+<h2>Query by box</h2>
+<p> 
+Click on <img src='./images/_queryBy_box.png'> to activate the query by box functionality: left mouse click on the map to activate the drawing of the regular box over it. 
+Keeping the left button pressed over to map and draw the regular box: when you finished, release the button.
+<br>
+<img src='./images/_queryBy_boxExample.png'>
+<br>
+
+<br>
+Coordinates of value selected will be shown below the map:<br>
+<img src='./images/_queryBy_boxLabel.png'>
+<br>
+<br>
+This functionality is enabled only for raster dataset.::::::::::::::
+_queryBy.html
+::::::::::::::
+<h2>Query the map</h2>
+<p> 
+In order to query the map, the system prodives to the user the possibility to examine the layer with: 
+<ul>
+<li>a single point</li>
+<br>
+<img src='./images/_queryBy_point.png'>
+<li>a regular box</li>
+<br>
+<img src='./images/_queryBy_box.png'>
+
+<li>a specific geographical area as a</li>
+<br>
+<img src='./images/_queryBy_shape.png'>
+
+	<ul>
+		<li>EU 28 province:</li>		
+		<li>EU 28 region:</li>
+		<br>
+		<br>
+		<img src='./images/_queryBy_provreg.png' width="50%">
+	</ul>
+	For a single point the value extracted is the real value, for box and geographical area the result is the average of all points contained.
+	
+</ul>::::::::::::::
+_queryBy_Links.html
+::::::::::::::
+<h2>National and Meteo Links</h2>
+<p> 
+After each mouse click over the map the system will automatically give the possibility to open an external page to show:
+<ul>
+<li><b>the National link</b></li>
+<br>
+<img src='./images/_queryBy_links_National.png'>
+<br>
+<i>It's a webpage over Climate-Adapt portal that contains general information for the country.</i>
+<br>
+Example over France: 
+<br>
+http://climate-adapt.eea.europa.eu/countries/france
+<br>
+<br>
+<li><b>the Meteo link</b></li>
+<br>
+<img src='./images/_queryBy_links_Meteo.png'>
+<br>
+
+<i>It's the national website responsible for the meteo.</i>
+<br>
+Example over France: 
+<br>
+http://www.meteofrance.com/climat/france
+</ul>::::::::::::::
+_queryBy_Point.html
+::::::::::::::
+<h2>Query by point</h2>
+<p> 
+Click on <img src='./images/_queryBy_point.png'> to activate the query by point functionality: left mouse click on the map to select a valid point identified by x and y coordinates:
+<br>
+<img src='./images/_queryBy_pointExample.png'>
+<br>
+Coordinates of value selected will be shown below the map:<br>
+<img src='./images/_queryBy_pointLabel.png'>
+<br>
+<br>
+This functionality is enabled only for raster dataset.::::::::::::::
+_queryBy_Shape.html
+::::::::::::::
+<h2>Query by geoographical area</h2>
+<p> 
+Click on <img src='./images/_queryBy_shape.png'> to activate the query by shape functionality.
+<br>
+When the dataset selected is a raster, the selection of predefined geographical will be enabled as shown in the following figure:
+<br>
+<img src='./images/_queryBy_shapeList.png'> 
+Select a valid vector and then left click on the map to select a specific area: the system will coloured the area as shown in the figure:
+<br>
+<img src='./images/_queryBy_shapeSelect.png'> 
+<br>
+The section below the map will help the user in order to identify the region/province selected:
+<br>
+<br>
+Example for a province:
+<br>
+<img src='./images/_queryBy_shapeLabel_P.png'> 
+<br>
+Example for a region:
+<br>
+<img src='./images/_queryBy_shapeLabel_R.png'> 
+
+<br>
+<br>
+When the dataset selected is a shapefile, the selection of predefined geographical will be disabled as shown in the following figure:
+<br>
+<img src="./images/_queryBy_shapeListDisabled.png">
+Select a valid area by clicking direclty on the map: the selection will made directly over the data saved into the layer.
+<br>
+<img src="./images/shapefile.png">

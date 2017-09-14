@@ -1,0 +1,167 @@
+.dygraph-legend{
+	font-size: 1.5em;
+	position: absolute;           
+    top: 500px;      
+    background: white;      
+	overflow: hidden;
+	left: 50px;
+}
+#graph_result{
+	
+	margin-top: -20px;
+}
+#graph,#graph_added,#graph_distribution{
+	border: 1px solid #C0C0C0;		
+}
+#graphTitle{
+	float: left;
+	
+	font-size: 15px;
+	font-weight: bold;
+	color: #074B8C;
+	
+}
+
+#graph1_dc{
+	float: left;
+	border: 1px solid #C0C0C0;	
+	width: 280px;
+	display: none;		
+	margin-left: 10px;
+	/*margin-top: 22px;*/
+	/*background-color: #C0C0C0;*/
+	/*padding: 10px;*/
+}
+#test{
+float: left;
+	/*background-color: #C0C0C0;*/
+}
+#graph1_result,#graph2_result{
+	border: 1px solid #FFF;
+	
+	margin-left: 300px;
+	display: none;		
+	
+}
+#graph_added{
+	margin-top: 50px;
+}
+#graphStats{
+	float: left;
+	padding: 10px;
+	margin-top: 10px;
+	width:99%;
+	background-color: #F4F4F4   ;
+	border: 1px solid #D3D3D3;
+	opacity:0.9;
+	filter:alpha(opacity=90); /* For IE8 and earlier */
+
+
+
+		
+}
+#graph_distribution{
+
+
+		
+}
+.graph_distribution{
+
+
+}
+.dygraph-title{
+	font-size: 15px;
+	font-weight: bold;
+	color: #074B8C;
+
+}
+.dygraph-xlabel,.dygraph-ylabel,.dygraph-y2label
+{
+	font-size: 13px;
+	font-weight: bold;
+	color: #074B8C;
+}
+.dygraph-axis-label-x,.dygraph-axis-label-y
+{	
+
+/*	transform:rotate(90deg);
+/*	-ms-transform:rotate(90deg); /* IE 9 */
+/*	-moz-transform:rotate(90deg); /* Firefox */
+/*	-webkit-transform:rotate(90deg); /* Safari and Chrome */
+/*	-o-transform:rotate(90deg); /* Opera */
+		color: #074B8C;
+}
+.dygraph-legend{
+margin-left: -50px;
+
+}
+#graphInfo{
+	float: left;
+	width: 600px;
+	height: 600px;
+	background-color: #C0C0C0;
+}
+/*
+.dygraph-legend{
+	float: left;
+	font-size: 13px;
+	color: #074B8C;
+	background-color: #C0C0C0;
+	width: 261px;	
+	height:50px;
+	border: 0px solid #000;
+}
+*/
+#status_images,#status_imagesAdded{
+	/*background-color:#000;*/		
+	margin-bottom: 5px;
+	margin-left: 660px;
+	height:30px;
+	
+}
+#graphLegend{
+	float: left;
+	width: 500px;	
+	height:50px;
+
+
+}
+#graph{
+	margin-top: 25px;
+	
+}
+#status,#status_added,#status_hist{
+	float: left;
+	text-align: left;
+	
+	/*background-color:yellow;	*/
+	font-size: 12px;	
+	width: 660px;	
+	height:30px;
+}
+.exportPNG img{
+
+padding: 1px;
+
+	
+}
+#graph_statsvalues{
+float: Left; width: 20%;
+
+
+
+}
+#graph_filenf{
+float: Left; width: 20%;
+
+}
+#graph_filenv{
+float: Left; width: 20%;
+
+}
+#graph_hist{
+float: Left; width: 40%;
+
+}
+
+

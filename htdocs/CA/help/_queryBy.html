@@ -1,0 +1,128 @@
+<h2>How to query a dataset</h2>
+
+<p> 
+In order to query a dataset, the system provides the user with several possibilities: 
+<ul>
+<li>Query by single point</li>
+<img src='./images/_queryBy_point.png'>
+<li>Query by rectangular box</li>
+
+<img src='./images/_queryBy_box.png'>
+<li>Query by specific geographical area</li>
+
+<img src='./images/_queryBy_shape.png'>
+<br>
+For land datasets, the geographical area can be either a EU 28 Province or a EU 28 Region
+		<br>
+		<img src='./images/_queryBy_provreg.png' width="50%">
+<br>
+<br>
+For marine datasets, the geographical area is a EU Marine Region:		
+<br>
+		<img src='./images/_queryBy_marine.png' >			
+	</ul>
+	
+	Note that for a single point, the value extracted is the actual value, while for box and geographical areas the result represents the average of all points contained in that area.
+</ul>
+<ul>
+<li><a href="#query_p">Query by point</a></li>
+<li><a href="#query_b">Query by box</a></li>
+<li><a href="#query_g">Query by geographical area</a></li>
+<li><a href="#query_links">National and Meteorological Links</a></li>
+</ul>
+
+
+<a href="#top">Top</a>
+<a name="query_p"></a><h2>Query by point</h2>
+
+<p> 
+Click on <img src='./images/_queryBy_point.png'> to activate the "Query by point" functionality: left-click on the map to select a valid point, identified by X and Y coordinates (in degrees):
+<img src='./images/_queryBy_pointExample.png'>
+<br>
+The coordinates of the selected point will be shown below the map:<br>
+<img src='./images/_queryBy_pointLabel.png'>
+<br>
+<br>
+Note that this functionality is enabled only for RASTER datasets.
+<br>
+<a href="#top">Top</a>
+<a name="query_b"></a><h2>Query by box</h2>
+
+<p> 
+Click on <img src='./images/_queryBy_box.png'> to activate the "Query by box" functionality: : left-click on the map to activate the drawing of a rectangular box. Keeping the left button pressed over to map, draw the box, and at the end release the button to specify the area.
+
+<img src='./images/_queryBy_boxExample.png'>
+<br>
+
+<br>
+The coordinates of area selected will be shown below the map:<br>
+<img src='./images/_queryBy_boxLabel.png'>
+<br>
+<br>
+Note that this functionality is enabled only for RASTER datasets.
+<br>
+<a href="#top">Top</a>
+<a name="query_g"></a><h2>Query by geographical area</h2>
+
+<p> 
+Click on <img src='./images/_queryBy_shape.png'> to activate the "Query by geographical area" functionality.
+<br>
+<br>
+When the dataset selected is a <b>RASTER dataset</b>, selection of a predefined geographical area will be enabled as in the following figure:
+<br>
+<img src='./images/_queryBy_shapeList.png'> 
+<br>
+Select a valid vector and then left click on the map to select a specific area: the system will shade the area as shown in the figure:
+<br>
+<img src='./images/_queryBy_shapeSelect.png'> 
+<br>
+<br>
+Example for an EU 28 Province:
+<br>
+<img src='./images/_queryBy_shapeLabel_P.png'> 
+<br>
+Example for an EU 28 Region:
+<br>
+<img src='./images/_queryBy_shapeLabel_R.png'> 
+
+<br>
+<br>
+When the dataset selected is a <b>SHAPEFILE</b>, selection of a predefined geographical area will be disabled as shown in the following figure:
+<br>
+<img src="./images/_queryBy_shapeListDisabled.png">
+<br>
+<br>
+In this case, select a valid area by a left-click over the map, directly selecting a geographical area of the layer.
+<br>
+<img src="./images/shapefile.png" >
+
+<br>
+
+<a href="#top">Top</a>
+<a name="query_links"></a><h2>National and Meteorological Links</h2>
+
+<p> 
+Each mouse click over the map provides the possibility to
+<ul>
+<li><b>open the corresponding National web page</b></li>
+<br>
+<img src='./images/_queryBy_links_National.png'>
+<br>
+<i>Web-page on Climate-ADAPT portal that contains general information for the selected country.</i>
+<br>
+Example over France: 
+<br>
+http://climate-adapt.eea.europa.eu/countries/france
+<br>
+<br>
+<li><b>open a meteorological web page</b></li>
+<br>
+<img src='./images/_queryBy_links_Meteo.png'>
+<br>
+
+<i>The national web-site responsible for meteorological data.</i>
+<br>
+Example over France: 
+<br>
+http://www.meteofrance.com/climat/france
+</ul>

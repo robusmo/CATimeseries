@@ -1,0 +1,20 @@
+<h2>FAQ</h2>
+<p>
+<b>3) What is it the "Spherical Mercator projection"?</b>
+</p>
+<p>
+This term refers to the fact that providers of the datasets available in Climate Adapt use a Mercator projection which treats the earth as a sphere, rather than a Mercator projection that treats the earth as an ellipsoid.
+<br>
+This affects calculations performed when treating the map as a flat plane, and is therefore important to be aware of when working with these map providers.
+
+</p>
+<p>
+In order to properly overlay data on top of the maps provided by the commercial API providers, it is necessary to use this projection. This applies primarily to displaying raster tiles over the commercial API layers - such as TMS, WMS, or other similar tiles.
+</p>
+<p>
+In order to work well with the existing commercial APIs, many users who create data designed for use within Google Maps will also use this projection. One prime example is OpenStreetMap, whose raster map tiles are all projected into the 'Spherical Mercator' projection.
+</p>
+<p>
+Projections in GIS are commonly referred to by their "EPSG" codes, identifiers managed by the European Petroleum Survey Group. One common identifier is "EPSG:4326	, which describes maps where latitude and longitude are treated as X/Y values. Spherical Mercator has an official designation of EPSG:3857. However, before this was established, a large amount of software used the identifier EPSG:900913. This is an unofficial code, but is still the commonly used code in OpenLayers. Any time you see the string "EPSG:4326", you can assume it describes latitude/longitude coordinates. Any time you see the string "EPSG:900913", it will be describing coordinates in meters in x/y.
+</p>
+

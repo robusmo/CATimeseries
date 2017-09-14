@@ -1,0 +1,742 @@
+<!DOCTYPE html> 
+<html class="ltr" dir="ltr" lang="en-GB"> 
+<head> 
+<meta http-equiv="expires" content="Thu, 19 Oct 2000 00:00:00 GMT"> 
+<title>Timeseries, Climate-ADAPT</title> 
+
+<link class="lfr-css-file" href="http://adapt-test.eea.europa.eu/ace-theme/css/main.css?browserId=firefox&minifierType=css&languageId=en_GB&t=1393324684000" rel="stylesheet" type="text/css" /> 
+
+
+<script src="./comm/scripts/OpenLayers.js"></script>	
+<script src="./comm/scripts/linq/linq.js"></script>	
+<script  src="./comm/scripts/mdlCommon.js"></script>	
+<script src="./comm/scripts/mdlGraphFunc.js"></script>	
+<!-- graph-->	
+
+<script type="text/javascript" src="./comm/scripts/dygraph/dygraph-combined.js"></script>
+<script type="text/javascript" src="./comm/scripts/dygraph/dygraph-dev.js"></script>	 
+<script src="./comm/scripts/jquery.min.js"></script>
+<script src="./comm/scripts/jquery-ui.js"></script>
+    
+<link rel="stylesheet" type="text/css" href="./comm/scripts/dygraph/dygraph.css"/>	
+<link rel="stylesheet" href="./comm/css/jqueryui/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="./comm/css/fmain.css"/>	
+
+
+<!-- new code added by robusmo -->
+
+
+</head>
+<body onload="$('#layer_field').val('');$('#layer_field-id').val('');" class=" controls-visible guest-community signed-out public-page">
+
+<div id="content">
+
+<!-- ######################### -->
+<!-- new code added by robusmo -->
+
+
+<script>
+var data ='';
+var strFirstLayer='';
+// dialog delete 
+$(function() {
+	$( "#dialog-delete" ).dialog({
+	resizable: false,
+	autoOpen: false,
+	height:170,
+	modal: true,
+	buttons: {
+	"Remove from the list": function() {
+		// remove a layer from the table of contents
+		lngGContLayers--;	
+		// delete it
+		deleteVariable();				
+		// Drag and drop functionality 
+		// Change only if the new value is different from the previous one
+		// Return the name of selected dataset
+		strTemp=_returnFirstLayerName("_divDataset_sel");							
+		// if different, change it
+		if (strTemp!=strFirstLayer)
+		{		
+			// counter
+			lngGContLayers--;			
+			// remove the selected class
+			_resetLayer_sel();
+			// first layer
+			strFirstLayer=_returnFirstLayerName("_divDataset");							
+			if (strFirstLayer!="")
+			{
+				_addLayer(strFirstLayer);			
+				lngGContLayers++;			
+			}
+			// indicator
+			//showIndicator(0);
+		}
+	$( this ).dialog( "close" );
+	},
+	Cancel: function() {
+		$( this ).dialog( "close" );
+		}
+	}
+	});
+});	
+	
+// tooltip functionality
+$(function() {
+$( document ).tooltip({
+	tooltipClass: "tooltipClass",
+	position: {
+	my: "center bottom-20",
+	at: "center top",
+	using: function( position, feedback ) {
+		$( this ).css( position );
+		$( "<div>" )
+		.addClass( "arrow" )
+		.addClass( feedback.vertical )
+		.addClass( feedback.horizontal )
+		.appendTo( this );
+		}
+	}
+});
+});
+// dialog list variables
+$(function() {
+	$( "#dialog_variables" ).dialog({
+		autoOpen: false,
+		height: 500,
+		width: 600,
+		modal: true,
+		buttons: {
+			Close: function() {				
+				// close the window
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});
+// dialog_datasetInfo
+$(function() {
+	$( "#dialog_datasetInfo" ).dialog({
+		autoOpen: false,
+		height: 500,
+		width: 600,
+		modal: true,
+		buttons: {
+			Close: function() {
+				document.getElementById("strTypeVar").value="";
+				// close the window
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});
+// Configuration graph dialog
+$(function() {
+	$( "#dialog_configureGraphParams" ).dialog({
+		autoOpen: false,
+		height: 910,
+		width: 920,		
+		modal: false,		
+		close: function(event,ui){ 		
+			// mouse loading disable
+			//showIndicator(0);				
+			// Disable all funcionalities button on graph configuration mask
+			_setTextExportGraphSection('ALL_DIS');				
+			// Clean All fiedls
+			_cleanAllFields();			
+			if (typeof objGInterval!="undefined")		// Clear graph timeout 
+			clearInterval(objGInterval); 			
+			// Clear the ajax call if is opened
+			if (reqAjax!="")	reqAjax.abort()								
+			// Close the window		
+		},
+		beforeClose: function(event) {
+				if (event.keyCode === $.ui.keyCode.ESCAPE) {				
+					return true;
+				}
+		},
+		buttons: {
+			"Start graph creation": function() {
+				// Submit the graph
+				submitGraph();
+			},		
+			"Refresh the graph": function() {
+				_reloadGraph();
+				return false;
+			},
+			"Stop graph creation": function() {
+				_stopGraph();
+				return false;
+			},			
+			"Help": function() {			
+				openHelp("_graph");
+			},			
+			Close: function() {			
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});
+// Date picker configuration
+$(function() {
+	$( "#dateFrom" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		// European format date
+		dateFormat: 'dd/mm/yy' 
+		}		
+	);
+});
+// Date picker configuration
+$(function() {
+	$( "#dateTo" ).datepicker({
+		changeMonth: true,
+		changeYear: true,
+		// European format date
+		dateFormat: 'dd/mm/yy' 
+	});
+});
+// Error dialog
+$(function() {
+	$( "#dialog_error" ).dialog({
+		autoOpen: false,
+		modal: true,
+		buttons: {
+			close: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+});
+// Sortable dataset list
+$(function() {
+		$('#ulDatasetLists').sortable({	
+			containment: "parent",
+			update: function(event, ui) {
+				
+				arrayLayers = $(this).sortable('toArray');		
+				// Drag and drop functionality 
+				// Change only if the new value is different from the previous one
+				
+				if (strFirstLayer!=arrayLayers[0])
+				{			
+					//showIndicator(1);
+					
+					strGScenarioID='';
+					var queryResult = Enumerable.From(arrayGDataset)
+					.Where(function (x) { return x.value == $('#chkDataset').val()})
+					.OrderBy(function (x) { return x.label })
+					.Select(function (x) { 
+					// found it
+					// set from-to dates
+				
+					var i=0;
+					var blnFound=false;
+					while((i<arrayReplaceIndicator.length)&&(blnFound==false))
+					{
+						if (arrayReplaceIndicator[i][1]==x.owner)
+							blnFound=true;
+						else
+							i++;
+					}
+					if (blnFound==true)
+					{
+						//_clearScenario();
+						//_addLayer();				
+						$('#cboOwnerID').val(arrayReplaceIndicator[i][0])
+						var strLAbel=x.value;									
+						var i=0;
+						var blnFound=false;
+						while((i<arrayGDataset.length)&&(blnFound==false))
+						{
+						
+							if (arrayGDataset[i].value==strLAbel)
+							{
+								blnFound=true;
+								
+								_loadVar_Layers("cboLayerID",0);
+								document.getElementById("cboScenarioID").disabled=false;
+								
+								$('#cboLayerID').val(arrayGDataset[i].scenario);																						
+								_clearScenario();
+								_addLayer();
+
+								var spltemp=arrayGDataset[i].scenario.split("REPLACESCENARIO");																		
+								strGScenarioID=$('#chkDataset').val().substr(spltemp[0].length,$('#chkDataset').val().length-spltemp[1].length-spltemp[0].length);	
+								
+							}
+							else
+								i++;
+						}														
+					}
+					else
+					{
+						$('#cboOwnerID').val(x.owner)
+						$('#cboLayerID').val(x.value)
+						_clearScenario();
+					}
+					
+					return "" })
+					.ToArray();					
+
+					// reset all layers to divSelect
+					_resetLayer_sel();
+					// Change the div class of all objects
+					//changeSelection(arrayLayers[0]);		
+					// Add the first one	
+					_removeLayer(arrayLayers[0]);			
+					strFirstLayer=arrayLayers[0];					
+					
+					_addLayer(strFirstLayer,1);
+					// Indicator
+					//showIndicator(0);
+				}
+			}
+		});	
+		$( "#ulDatasetLists" ).disableSelection();
+	});
+</script>
+
+	<!-- title -->
+	<h1 class="portlet-title"><span class="portlet-title-text">Timeseries tool</span></h1>
+	<!--<span id=titleHelpSection><a target="_blank" onclick="openHelp();return false" href="/help/home.html"><img id="img_url_nat_cl" title="Help" alt="Help" src="/comm/images/1398191025_icon-help-circled.png""></a></span>-->
+	
+	<!-- draggable_indicator -->
+	<div id="draggable_indicator" ><img src='/comm/images/image_634452.gif'></div>			
+	
+	<form name="form1" id="myForm">	
+	
+		<div id=container>
+		
+			<div class="containerSX">	
+			
+				<ul class=ul_menu>				
+				
+					<li class=li_menu_select>
+					
+						<div class=div_menu_label><label for="cboOwnerID" title="Select a Climate Indicator, a dataset and, where available, a scenario.">Select:</label></div>
+						
+						<div class=div_menu_help><a title='Click here to open the help section' onclick="openHelp('_mViewer');return false;" href=""><img src="./comm/images/infoG.png" ></a></div>
+						<!-- VARIABLES LIST -->			
+						<div id="draggable_variable" class="ui-widget-content2" style="position: relative; left: 0px; top:0px;">		
+						
+							<div id=divSelect1 class=divSelect1_lineHThin>
+								<label for="cboOwnerID">Climate Indicator</label>								
+								<br>
+								<select id="cboOwnerID" onchange='_loadVar_Layers("cboLayerID",0);return false;'>
+								</select>		
+								<br>
+								<label for="cboLayerID">Dataset</label>
+								<br>
+								<select id="cboLayerID" ></select>		
+								<br>
+								<label for="cboScenarioID" >Scenario</label>
+								<br>
+								<select id="cboScenarioID" disabled></select>
+								<input type="hidden" id="layer_field-id"  >	
+								<table>
+									<tr>
+										<td>
+											<label for="year_select">Date</label>
+											<br>
+											<select id="year_select" onchange="loadDataset(1,1)" name="year_select" /></select>
+											&nbsp;&nbsp;&nbsp;
+											<select id="date_select" onchange="loadDataset(1,1)" name="date_select" /></select>			
+											
+										</td>
+									</tr>
+								</table>			
+							</div>
+							<div id=divSelect2>
+								<a href='#' onclick='_showAllVariables();'><img src='./comm/images/1398188746_list.png' title='Datasets list'></a>
+							</div>						
+						</div>
+					</li>					
+					<li class=li_menu_table>
+						<div class=div_menu_label><label title="List of available datasets loaded">List of datasets selected:</label></div>
+						<div class=div_menu_help>
+						<a title='Click here to open the help section' onclick="openHelp('_mViewer');return false;" href=""><img src="./comm/images/infoG.png" ></a>
+						</div>
+					</li>
+				</ul>
+				
+				<!-- LAYERS -->
+				<div id="draggable_layers" class="ui-widget-content2" style="position: relative; left: 0px; top:-10px;">																
+					<div id=divDatasetLists><ul id="ulDatasetLists"></ul></div>									
+				</div>		
+			</div>
+			<!-- containerDX -->
+			<div class="containerDX">				
+				<!-- divMap -->
+				<div  id="divMap"></div>
+					<!-- draggable_tools -->
+					<div id="draggable_tools" class="ui-widget-content" style="position: relative; left: 0px; top:5px;">																		
+						<div class="div_menu_labelSpatialSelection">
+							<label title="Query the dataset by a spatial selection" for="cboOwnerID">Spatial selection:</label>
+						</div>
+						<div class=div_menu_help><a title='Click here to open the help section' onclick="openHelp('_mViewer');return false;" href=""><img src="./comm/images/infoG.png" ></a></div>
+						<table class=tableInputRadio border=0>
+							<tr>
+								<td>&nbsp;&nbsp;<input type="radio" name="type" value="move" title="Move over the map" id="moveToggle" alt="Move" onChange="toggleControl(this.value,this.checked,this.disabled);openQueryDialog('M');return false;"  >&nbsp;&nbsp;<br><label for="moveToggle"><img title="Move" src='./comm/images/move.png' id=imgQueryMove alt='Move'></label></td>
+								<td>&nbsp;&nbsp;<input type="radio" name="type" value="point" title="Query by point" id="pointToggle" alt="Query by point" onChange="toggleControl(this.value,this.checked,this.disabled);openQueryDialog('P');return false;"  >&nbsp;&nbsp;<br><label for="pointToggle"><img title="Query by point"  src='./comm/images/query_point_di.png' id=imgQueryPoint onClick="document.getElementById('pointToggle').checked=true;toggleControl(document.getElementById('pointToggle').value,document.getElementById('pointToggle').checked,document.getElementById('pointToggle').disabled);openQueryDialog('P');return false;" alt='Query by point'></label></td>
+								<td>&nbsp;&nbsp;<input  type="radio" name="type" value="box" title="Query by box" id="boxToggle"  onChange="toggleControl(this.value,this.checked,,this.disabled);openQueryDialog('B');return false;"  >&nbsp;&nbsp;<br><label for="boxToggle"><img title="Query by box" src='./comm/images/query_box_di.png' id=imgQueryBox alt='Query by box' onClick="document.getElementById('boxToggle').checked=true;toggleControl(document.getElementById('boxToggle').value,document.getElementById('boxToggle').checked,document.getElementById('boxToggle').disabled);openQueryDialog('B');return false;"></label></td>
+								<td>&nbsp;&nbsp;<input type="radio" name="type" value="shape" title="Query by geographical area" id="featureToggle"  onChange="toggleControl(this.value,this.checked,,this.disabled);openQueryDialog('S');return false;" >&nbsp;&nbsp;<br><label for="featureToggle"><img title="Query by geographical area" src='./comm/images/query_shape_di.png' id=imgQueryShape alt='Query by geographical area' onClick="document.getElementById('featureToggle').checked=true;toggleControl(document.getElementById('featureToggle').value,document.getElementById('featureToggle').checked,document.getElementById('featureToggle').disabled);openQueryDialog('S');return false;"></label></td>
+								<td><br><span id=spanVariable_shape ><select id="shape_select" onchange="loadDataset(0,0,'',0,1)"  name="shape_select" title="Select a geographical layer" disabled /><option value='' selected></option></select></span></td>
+							</tr>														
+						</table>								
+						</div>	
+					
+						<!-- draggable_graph -->
+						<div id="draggable_graph" class="ui-widget-content" style="position: relative; left: 244px; top:-45px; display: block;">											
+							<div class="div_menu_labelTools">
+								<label title="Select an available tool" for="cboOwnerID">Tools:</label>
+							</div>
+							<div class=div_menu_help><a title='Click here to open the help section' onclick="openHelp('_graph');return false;" href=""><img src="./comm/images/infoG.png" ></a></div>						
+							
+							<table class=tableInputTool border=0>
+								<tr>
+									<td>									
+										<a href='' onclick='_returnDateFromTo("");_configureGraph(1);return false;'><img id=img src='./comm/images/1391784891_diagram_v2-05.png' title='Configure the graph' alt='Configure the graph'></a>						
+									</td>
+									<td  id=td_top>									
+										<span id=span_url_nat_cl><img  id=img_url_nat_cl src="/comm/images/meteo_dis.png" alt="National Meteorological link" title='National Meteorological link'></span>
+									</td>
+									<td  id=td_top>									
+										<span id=span_url_cd_state><img id=img_url_cd_state src="/comm/images/flag_dis.png" alt="Country link" title='Country link'></span>														
+									</td>									
+										
+								</tr>
+							</table>						
+						</div>	
+							
+						<!-- draggable_queryBy -->
+						<div id="draggable_queryBy" class="ui-widget-content" style="position: relative; left: 338px; top:-95px; display: block;">			
+							<div class="div_menu_labelQueryBy">
+								<label for="cboOwnerID">Query by <label id=spanQueryByType></label></label>
+							</div>
+						<div class=div_menu_help>
+							<a title='Click here to open the help section' onclick="openHelp('_queryBy');return false;" href=""><img src="./comm/images/infoG.png" ></a>
+						</div>
+							
+	
+						<!-- draggable_querybypoint -->
+						<div id="draggable_querybypoint" class="ui-widget-content" style="position: relative; left: 0px; top:0px;">																	
+																		
+							<table id=tableTools2 border=0>
+								<tr>
+									<td id=tableTools2_tdLabel>
+										<label id=txtLat_label>Lat&nbsp;</label>
+									</td>					
+									<td>
+										<input type="text" size="6" id="txtLat" value="--" readonly><label id=txtLat_deg>&deg;&nbsp;</label>
+									</td>							
+									<td id=tableTools2_tdLabel>
+										<label id=txtLon_label>Lon&nbsp;</label>
+									</td>												
+									<td>
+										<input type="text" size="6" id="txtLon" value="--" readonly><label id=txtLon_deg>&deg;&nbsp;</label>
+									</td>							
+								</tr>
+							</table>			
+						</div>	 
+						<!-- draggable_querybybox -->
+						<div id="draggable_querybybox" class="ui-widget-content" style="position: relative; left: 0px; top: 0px; display: none;">																	
+							<table id=tableTools2 border=0>
+								<tr>
+									<td id=tableTools2_tdLabel>
+										<label id=txtULat_label>N Lat&nbsp;</label>
+									</td>
+									<td>
+										<input type="text" size="8" id="txtULat" value="--" readonly><label id=txtULat_deg>&deg;&nbsp;</label>
+									</td>
+									<td id=tableTools2_tdLabel><label id=txtLLat_label>S Lat&nbsp;</label></td>
+									<td>
+										<input type="text" size="8" id="txtLLat" value="--" readonly><label id=txtLLat_deg>&deg;&nbsp;</label>
+									</td>
+									<td id=tableTools2_tdLabel><label id=txtLLon_label>W Lon&nbsp;</label></td>
+									<td>
+										<input type="text" size="8" id="txtLLon" value="--" readonly><label id=txtLLon_deg>&deg;&nbsp;</label>
+									</td>
+									<td id=tableTools2_tdLabel><label id=txtRLon_label>E Lon&nbsp;</label></td>
+									<td>
+										<input type="text" size="8" id="txtRLon" value="--" readonly><label id=txtRLon_deg>&deg;&nbsp;</label>
+									</td>
+								</tr>					
+							</table>
+							
+						</div>	 
+						<!-- draggable_querybyshape -->
+						<div id="draggable_querybyshape" class="ui-widget-content" style="position: relative; left: 0px; top: 0px; display: none;">																		
+							<table id=tableTools2 border=0>
+								<tr>
+									<td id=tableTools2_tdLabel width=20%>Lat&nbsp;</td>
+									<td>
+										<input type="text" size="6" id="txtFLat" readonly value="" >&deg;&nbsp;
+									</td>	
+									<td id=tableTools2_tdLabel width=20%>Lon&nbsp;</td>
+									<td id=tableTools2_tdLabel>
+										<input type="text" size="6" id="txtFLon" readonly value="" >&deg;&nbsp;							
+									</td>									
+								</tr>
+								<tr>
+									<td id=tableTools2_tdLabel colspan=2>
+										<label id="txtFSelectedName">Result:</label>
+									</td>
+									<td colspan=2>
+										<input readonly type="text" size="20" id="txtFSelectedValue" value="">
+									</td>
+								</tr>								
+							</table>
+						</div>						
+					</div>	
+					<!-- draggable_indicator2 -->
+					<div id="draggable_indicator2" class="ui-widget-content" style="position: relative; left: 0px; top: -80px; display: block; ">loading...</div>
+
+					<!-- dialog_variables -->
+					<div id="dialog_variables" title="Datasets list" style="display: none;">	
+						<label for="strTypeVar">Enter dataset definition:</label>
+						<input id="strTypeVar" onKeyUp="_loadLikeLayers();"><span id=spanVarLoading></span>&nbsp;<a href='' title='Clear dataset definition' onclick="document.getElementById('strTypeVar').value='';_loadLikeLayers();return false;">x</a><span id=spanVarLoading></span>						
+						<div id=divVariablesList></div>	
+					</div>
+					<!-- dialog_datasetInfo -->
+					<div id="dialog_datasetInfo" title="Datasets Info" style="display: none;">													
+						<div id="tabsInfo_dates"></div>
+					</div>	
+				</div>
+				<!-- dialog_configureGraph -->
+				<div id="dialog_configureGraphParams" min="1" max="1" title="Timeseries configuration" style="display: none;">						
+					
+					<button class="_buttonMaximize DivHidden" id=buttonMaximize type="button" onClick="_maximazeWin();return false;">
+					<span class="ui-button-icon-primary ui-icon ">max</span>
+					</button>
+					
+					<div id=graph>
+					<span id="spanValidateTips_Graph" class="validateTips_graph" title="Select a Climate indicator and then one or more dataset from the list for Y1 (left axis) and/or Y2 (right axis).">Configure:</span>	
+					<table id=tableConfigureGRaph  border=1 width=100%>
+						<tr>
+							<td class=tableInfo_dates_trY1>
+								<b>Climate indicator</b> (left y-axis<span id=LeftYMax></span>)</label>
+								<br>
+								<select  id=selVarY1 onChange='_loadVar_Layers("selVarY1",1);return false;'></select>
+								<a href='' title='Click here to open the help section' onclick="openHelp('_graph');return false;"><img src='./comm/images/infoG.png'></a>
+								
+								<input type=hidden id=txtHelpWhere>
+								<br><br><b>Dataset</b> 
+								<select  id=selVarY1_list multiple size=8 onChange="_setMaximumSelected(this,'selVarY1');">													
+								</select>
+								
+								<a href='' onclick="_openDialogInfo();return false;"><img  src='./comm/images/1398281493_gtk-about.png'></a>
+								
+								
+							</td>
+
+							<td   width=11% id=td_axes_param>							
+								<b>Date</b>
+								<br>
+								<br>
+								<label for="dateFrom" title="Select a valid date range."><i>from:</i></label>
+								<br><input size=10 type="text" id="dateFrom">
+								<br><br>
+								<label for="dateTo"><i>to:</i></label>
+								<br><input size=10 type="text" id="dateTo">
+								<br><br>
+								<label for=chkSD title="Check to show the uncertainty into the graph"><b>Uncertainty</b></label> <input type=checkbox id=chkSD checked>								
+								<center>																	
+									<span id=graphSection_PLAYInit title="Start graph creation"><a href='' onClick="submitGraph();return false;"><img src='/comm/images/play.png'></a></span>														
+								</center>
+							</td>
+
+							<td class=tableInfo_dates_trY2>
+								<b>Climate indicator</b> (right y-axis<span id=RightYMax></span>)
+								<br>
+								<select  id=selVarY2 onChange='_loadVar_Layers("selVarY2",1);return false;'></select>
+								<a href='' title='Click here to open the help section' onclick="openHelp('_graph');return false;"><img src='./comm/images/infoG.png'></a>								
+								<br><br><b>Dataset</b> 
+								<select  id=selVarY2_list multiple size=8 onChange="_setMaximumSelected(this,'selVarY2');">													
+								</select>
+								<a href='' onclick="_openDialogInfo();return false;"><img   src='./comm/images/1398281493_gtk-about.png'></a>
+							</td>		
+						</tr>
+						<tr class=tableInfo_dates_trQueryBy>	
+							<td  colspan=3>
+							Query by <span id=spanGQueryBy></span>
+							<br>Parameters: <span id=spanGQueryBy_params></span>		
+							</td>
+						</tr>						
+					</table>
+	
+					<!-- graph -->
+					
+					
+						<div id="draggable_indicatorG" class=_indicatorOver><p align=center><img src='/comm/images/image_634452.gif'><br>The graph creation could take a bit of time, please be patient.</p></div>			
+						<div id=graphResult>&nbsp;</div>				
+						<div id=graphOther>							
+							<span id=graphSection_PDF title="Export graph as PDF"><img src='/comm/images/PDF_downlaod_disable.png'></span>
+							<span id=graphSection_PNG title="Export graph as PNG"><img src='/comm/images/PNG_downlaod_disable.png'></span>														
+							<span id=graphSection_PLAY title="Start graph creation"><a href='' onClick="submitGraph();return false;"><img src='/comm/images/play.png'></a></span>														
+							<span id=graphSection_STOP title="Stop graph creation"><img src='/comm/images/stop_disable.png'></span>														
+							<span id=graphSection_RELOAD  title="Refresh graph"><img src='/comm/images/refresh_disable.png'></span>														
+							<label for="txtSetMinValueGraphY1" title="Select left y-axix range values">Left<br>y-axix</label>
+							<br>
+							<label for="txtSetMinValueGraphY1">min:</label><br><input type=textbox size=2 id=txtSetMinValueGraphY1 value='' onChange='_resetMinMaxGraph("Y1");'>
+							<br>
+							<label for="txtSetMaxValueGraphY1">max:</label><br><input type=textbox size=2 id=txtSetMaxValueGraphY1 value='' onChange='_resetMinMaxGraph("Y1");'>
+							<br>
+							<label for="txtSetMinValueGraphY2" title="Select right y-axix range values">Right y-axix</label>
+							<br>
+							<label for="txtSetMinValueGraphY2">min:</label><br><input type=textbox size=2 id=txtSetMinValueGraphY2 value='' onChange='_resetMinMaxGraph("Y2");'>
+							<br>
+							<label for="txtSetMaxValueGraphY2">max:</label><br><input type=textbox size=2 id=txtSetMaxValueGraphY2 value='' onChange='_resetMinMaxGraph("Y2");'>
+							<br>
+							<br>
+							&nbsp;
+							<a onclick="openHelp('_graph');return false;" title="Click here to open the help section" href=""><img src="./comm/images/infoG.png"></a>	
+						</div>							
+					</div>		
+					<span id=status></span>
+				</div>
+				<img id=testIDimage style="visibility: hidden;">		
+			</div>
+		</div>
+		</form>
+		<!-- dialog_error -->
+		<div id="dialog_error" title="Warning" >
+			<span id=spanDialogError>
+			</span>
+		</div>
+		<!-- delete -->
+		<div id="dialog-delete" title="Remove it?" class=DivHidden>
+			<input type=hidden id=txtDeleteVariableID value=''>
+			<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure to remove the selected variable?</p>
+		</div>
+	</body>
+</html> 
+
+
+
+    <script defer="defer" type="text/javascript">
+		var fromGProj="EPSG:4326";
+		var toGProj="EPSG:900913";		
+		var dateGFrom ="";
+		var dateGTo ="";
+		var mapObj ="";
+		var drawControls ="";
+		var pointCheck = "";
+		var boxCheck="";
+		var options = {projection: new OpenLayers.Projection(fromGProj)};	
+		// map	
+		var mapObj = new OpenLayers.Map ("divMap", {
+            controls:[ 
+						new OpenLayers.Control.Navigation(),
+						new OpenLayers.Control.PanZoomBar(),
+						new OpenLayers.Control.ScaleLine(),
+						new OpenLayers.Control.Permalink('permalink'),
+						new OpenLayers.Control.MousePosition(),                    
+						new OpenLayers.Control.Attribution()
+				      ],
+					maxExtent: new OpenLayers.Bounds(-20037508.34,-20037508.34,20037508.34,20037508.34),
+					maxResolution: 156543.0399,
+					numZoomLevels: 19,
+					units: 'm',
+					projection: new OpenLayers.Projection(toGProj),
+					displayProjection: new OpenLayers.Projection(fromGProj)
+            } );
+
+			var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS","http://vmap0.tiles.osgeo.org/wms/vmap0", {layers: 'basic'} );
+			/*
+            var road = new OpenLayers.Layer.Bing({
+                name: "Road",
+                key: "AjRFF4zVlwi2P06IaNbh2zapZmNYMAvnbbtyCi8fwCta2OhF06U32i-U7wTILvXA",
+                type: "Road"
+            });
+			*/
+            var hybrid = new OpenLayers.Layer.Bing({
+                name: "Hybrid",				
+                key: "AjRFF4zVlwi2P06IaNbh2zapZmNYMAvnbbtyCi8fwCta2OhF06U32i-U7wTILvXA",
+                type: "AerialWithLabels"
+            });
+			/*
+            var aerial = new OpenLayers.Layer.Bing({
+                name: "Aerial",
+								
+                key: "AjRFF4zVlwi2P06IaNbh2zapZmNYMAvnbbtyCi8fwCta2OhF06U32i-U7wTILvXA",
+                type: "Aerial"
+            });
+			*/
+			mapObj.addLayers([hybrid]);
+
+			var fromProjection = new OpenLayers.Projection(fromGProj);
+			var toProjection   = new OpenLayers.Projection(toGProj); 
+			var position       = new OpenLayers.LonLat(18.5,50.5).transform( fromProjection, mapObj.getProjectionObject());
+		
+
+			mapObj.setCenter(position,3);
+        
+			// Point
+			var pointLayerObj = new OpenLayers.Layer.Vector("point_layer");
+			var pointCheck = new OpenLayers.Control.DrawFeature(pointLayerObj,OpenLayers.Handler.Point);
+			pointCheck.handler.callbacks.create = function(data) {		
+				if(pointLayerObj.features.length > 1)
+				{
+					pointLayerObj.removeFeatures(pointLayerObj.features[0]);
+				}
+			}
+		
+			// initialize object box
+			var boxLayerObj = new OpenLayers.Layer.Vector("box_layer");
+			var boxCheck = new OpenLayers.Control.DrawFeature(boxLayerObj,OpenLayers.Handler.RegularPolygon, {
+					handlerOptions: {
+					sides: 4,
+					irregular: true
+				}
+			}
+			);
+			boxCheck.handler.callbacks.create = function(data) {
+				if(boxLayerObj.features.length > 0)
+				{
+					boxLayerObj.removeAllFeatures();
+				}
+			}
+
+			// Shape
+			var shapeLayerObj = new OpenLayers.Layer.Vector("shape_layer");
+			var shapeCheck = new OpenLayers.Control.DrawFeature(shapeLayerObj,OpenLayers.Handler.Point);
+			shapeCheck.handler.callbacks.create = function(data) {
+				
+				if(shapeLayerObj.features.length > 0)
+				{
+					shapeLayerObj.removeAllFeatures(shapeLayerObj.features[0]);
+				}
+			}
+
+			drawControls = {
+				point: pointCheck,
+				box: boxCheck,
+				shape: shapeCheck,
+			};		
+			
+			boxCheck.events.register('featureadded', drawControls['box'], function(f) {   
+				queryByBox(f);								
+			});			
+
+			pointCheck.events.register('featureadded', drawControls['point'], function(f) {   
+				
+				queryByPoint(f);								
+			});		
+			shapeCheck.events.register('featureadded', drawControls['shape'], function(f) {   
+				
+				queryByShape(f);								
+			});		
+
+			data = loadDatasets('INIT');
+			clearFields();	
+			_clearScenario();
+			_loadVar_Layers("cboLayerID",0);
+			_loadVar_Layers("selVarY1",0);			
+			_loadVar_Layers("selVarY2",0);
+			_verifyBrowser();
+			showIndicator(0);
+			// select the first empty element
+			$('#cboOwnerID').val(''); 
+
+      </script>
